@@ -1,4 +1,4 @@
-import { GENERATE_OPTIONS, SELECT_OPTION, MARK_TRIED } from './constants';
+import { GENERATE_OPTIONS, SELECT_OPTION, MARK_TRIED, TOGGLE_OPTION } from './constants';
 import cardsData from '../../store/data/cards';
 
 const selectedOptions = (state = {}, action) => {
@@ -56,9 +56,16 @@ const selectedOptions = (state = {}, action) => {
         options
       };
     }
+    case TOGGLE_OPTION: {
+      return {
+        currentOption: action.id,
+        options: state.options
+      };
+    }
     default:
       return state;
   }
+
 };
 
 export default selectedOptions;

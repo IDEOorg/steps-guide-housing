@@ -1,4 +1,4 @@
-import { GENERATE_OPTIONS, SELECT_OPTION, MARK_TRIED } from './constants';
+import { GENERATE_OPTIONS, SELECT_OPTION, MARK_TRIED, TOGGLE_OPTION } from './constants';
 
 export function generateOptions(ids) {
   return {
@@ -17,6 +17,13 @@ export function selectOption(id) {
 export function markTried(id) {
   return {
     type: MARK_TRIED,
+    id
+  };
+}
+
+export function toggleOption(id) {
+  return {
+    type: TOGGLE_OPTION,
     id
   };
 }
