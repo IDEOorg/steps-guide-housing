@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './index.less';
 import Card from '../../components/Card';
+import { selectCard } from './actions';
 
 class CardsPage extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class CardsPage extends Component {
   }
   render() {
     const cards = this.props.cards.map((card) =>
-      <Card key={card.id} text={card.text} selected={card.selected}/>
+      <Card key={card.id} id={card.id} text={card.text} selected={card.selected} onSelect={this.props.onSelect}/>
     );
     return (
       <div className="cards_page">
@@ -32,7 +33,14 @@ function mapStateToProps(state) {
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    onSelect: (id) => dispatch(selectCard(id)),
+  };
+}
+
+
 export default connect(
   mapStateToProps,
-  {}
+  mapDispatchToProps
 )(CardsPage);
