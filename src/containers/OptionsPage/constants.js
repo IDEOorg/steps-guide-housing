@@ -1,0 +1,1 @@
+export const GENERATE_OPTIONS = 'GENERATE_OPTIONS';

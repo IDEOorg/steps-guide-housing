@@ -30,6 +30,8 @@ const initialState = {
       text: "I qualify for public benefits",
       selected: false
     },
+  ],
+  selectedOptions: [
   ]
 };
 
