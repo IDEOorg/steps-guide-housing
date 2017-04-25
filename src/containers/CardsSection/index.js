@@ -7,7 +7,7 @@ import { generateOptions, selectCard } from './actions';
 import { changeNav } from '../App/actions';
 import { OPTIONS_PAGE } from '../App/constants';
 
-class CardsPage extends Component {
+class CardsSection extends Component {
   constructor(props) {
     super(props);
   }
@@ -48,4 +48,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CardsPage);
+)(CardsSection);

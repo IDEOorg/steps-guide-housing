@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import cards from '../../containers/CardsPage/reducer';
+import cards from '../../containers/CardsSection/reducer';
 import selectedOptions from '../../containers/OptionsPage/reducer';
 import nav from '../../containers/App/reducer';
 

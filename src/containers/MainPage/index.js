@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.less';
-import CardsPage from '../CardsPage';
+import CardsSection from '../CardsSection';
 
 export default class MainPage extends Component {
   render() {
@@ -12,7 +12,7 @@ export default class MainPage extends Component {
             <p className="intro_tagline">There are still options to explore when you can't pay rent. To get started, choose all the statements on the right that apply to you.</p>
           </div>
         </div>
-        <CardsPage />
+        <CardsSection />
       </div>
     );
   }
