@@ -2,22 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './index.less';
 import Option from '../../components/Option';
+import Link from '../../components/Link';
 import optionsData from '../../store/data/options';
 
 class OptionsPage extends Component {
   render() {
-    console.log(this.props.selectedOptions);
-    const options = this.props.selectedOptions.map((id) =>
-      <Option key={id} text={optionsData[id]["text"]}/>
+    const options = this.props.selectedOptions.map((id, i) =>
+      <Option key={id} order={i + 1} text={optionsData[id]["text"]}/>
     );
     return (
       <div className="options_page">
-        <div className="options_header">
-          <h2>My Options</h2>
-        </div>
         <div className="options_section">
+          <div className="options_intro_section">
+            <h2>What can you do?</h2>
+            <Link>Back to statements</Link>
+          </div>
           {options}
         </div>
+        <div className="actions_section"></div>
       </div>
     );
   }

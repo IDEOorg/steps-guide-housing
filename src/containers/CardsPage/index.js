@@ -4,6 +4,8 @@ import './index.less';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import { generateOptions, selectCard } from './actions';
+import { changeNav } from '../App/actions';
+import { OPTIONS_PAGE } from '../App/constants';
 
 class CardsPage extends Component {
   constructor(props) {
@@ -18,11 +20,6 @@ class CardsPage extends Component {
     .map((card) => card.id);
     return (
       <div className="cards_page">
-        <div className="cards_header">
-          <h2>I Can't Pay My Rent</h2>
-          <h4>There are still options to explore when you can't pay rent now.</h4>
-          <h4>To get started, choose all the statements that apply to you:</h4>
-        </div>
         <div className="cards_section">
           {cards}
         </div>
@@ -42,6 +39,7 @@ function mapDispatchToProps(dispatch) {
   return {
     onSelect: (id) => dispatch(selectCard(id)),
     onSubmit: (ids) => {
+      dispatch(changeNav(OPTIONS_PAGE));
       dispatch(generateOptions(ids));
     }
   };

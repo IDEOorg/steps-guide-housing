@@ -1,3 +1,5 @@
+import { MAIN_PAGE } from '../containers/App/constants';
+
 const initialState = {
   cards: [
     {
@@ -32,7 +34,8 @@ const initialState = {
     },
   ],
   selectedOptions: [
-  ]
+  ],
+  nav: MAIN_PAGE
 };
 
 export default initialState;
