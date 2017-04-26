@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
 import './index.less';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import { selectCard } from './actions';
 import { generateOptions } from '../OptionsPage/actions';
-// import { changeNav } from '../App/actions';
-// import { OPTIONS_PAGE } from '../App/constants';
+import { changeNav } from '../App/actions';
+import { OPTIONS_PAGE } from '../App/constants';
 
 class CardsSection extends Component {
   render() {
@@ -40,7 +39,7 @@ function mapDispatchToProps(dispatch) {
   return {
     onSelect: (id) => dispatch(selectCard(id)),
     onSubmit: (ids) => {
-      dispatch(push('/options'));
+      dispatch(changeNav(OPTIONS_PAGE));
       dispatch(generateOptions(ids));
     }
   };

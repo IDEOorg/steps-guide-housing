@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
 import './index.less';
 import { selectOption } from './actions';
 import Option from '../../components/Option';
 import Action from '../../components/Action';
 import Link from '../../components/Link';
 import optionsData from '../../store/data/options';
+import { changeNav } from '../App/actions';
+import { MAIN_PAGE } from '../App/constants';
 
 class OptionsPage extends Component {
   render() {
@@ -53,7 +54,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    goBack: () => dispatch(push('/')),
+    goBack: () => dispatch(changeNav(MAIN_PAGE)),
     onSelect: (id) => dispatch(selectOption(id))
   };
 }
