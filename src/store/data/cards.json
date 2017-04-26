@@ -1,15 +1,15 @@
 {
   "1": {
     "text": "I've missed rent payments in the past",
-    "options": ["1", "2", "3"]
+    "options": ["1", "2", "3", "4"]
   },
   "2": {
-    "text": "I don't have any kind of savings",
-    "options": ["1", "2", "3"]
+    "text": "I don't have any money saved",
+    "options": ["1", "2", "3", "4", "5"]
   },
   "3": {
-    "text": "I've missed payments on other utilities",
-    "options": ["1", "2", "3"]
+    "text": "I can't pay for my utilities",
+    "options": ["1", "2", "3", "4"]
   },
   "4": {
     "text": "I won't be able to pay my rent in the future",
@@ -17,7 +17,7 @@
   },
   "5": {
     "text": "I've gotten eviction notices",
-    "options": ["1", "2", "3"]
+    "options": ["6", "4"]
   },
   "6": {
     "text": "I qualify for public benefits",

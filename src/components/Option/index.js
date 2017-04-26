@@ -7,7 +7,7 @@ export default class Option extends Component {
     let optionStyles;
     if(this.props.selected) {
       optionStyles = {
-        background: 'green'
+        background: 'rgb(250,251,252)'
       };
     }
     return (

@@ -1,58 +1,71 @@
 {
   "1": {
     "text": "Talk to your landlord",
-    "actions": {
-      "1": {
+    "actions": [
+      {
+        "id": "1",
         "headline": "Get in touch ASAP",
         "text": "Taking the initiative to contact your landlord will help build trust and allow your landlord to make plans on their end."
       },
-      "2": {
+      {
+        "id": "2",
         "headline": "Make yourself available",
         "text": "Answer any calls, emails, or texts from your landlord as soon as you get them. Being responsive respects their time and lets them know you aren't going to disappear."
       },
-      "3": {
+      {
+        "id": "3",
         "headline": "Offer another solution",
         "text": "Suggesting a temporary, alternate solution such as a partial payment or a payment plan is a sign of good faith and lets your landlord know you eventually intend to pay."
       },
-      "4": {
+      {
+        "id": "4",
         "headline": "Apologize, but no excuses",
         "text": "It may help to explain your situation if it's an emergency, but only if it leads to finding a viable payment solution."
       }
-    }
+    ]
   },
   "2": {
-    "text": "Get utility assistance"
+    "text": "Get utility assistance",
+    "actions": []
   },
   "3": {
     "text": "Get help from a charity",
-    "actions": {
-      "1": {
+    "actions": [
+      {
+        "id": "1",
         "headline": "Contact your local 2-1-1",
         "text": "They can connect you with resources related to housing (availability varies by location)."
       },
-      "2": {
+      {
+        "id": "2",
         "headline": "Find a Catholic Charities agency",
         "text": "They can help you with services related to housing (availability varies by location)."
       },
-      "3": {
+      {
+        "id": "3",
         "headline": "Apply for a Modest Needs grant",
         "text": "These small, emergency grants are allocated to low-income workers. Find out more by visiting their website."
       }
-    }
+    ]
   },
   "4": {
-    "text": "Get personalized advice"
+    "text": "Get personalized advice",
+    "actions": []
   },
   "5": {
-    "text": "Start your savings"
+    "text": "Start your savings",
+    "actions": []
   },
   "6": {
-    "text": "Get legal aid"
+    "text": "Get legal help",
+    "actions": []
   },
   "7": {
-    "text": "File for unemployment"
+    "text": "File for unemployment",
+    "actions": []
   },
   "8": {
-    "text": "See if you qualify for any government benefits"
+    "text": "See if you qualify for any government benefits",
+    "actions": []
   }
 }
