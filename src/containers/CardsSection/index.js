@@ -23,7 +23,9 @@ class CardsSection extends Component {
         <div className="cards_section">
           {cards}
         </div>
-        <Button text="Show me my options" onClick={() => this.props.onSubmit(cardIds)}/>
+        <div className="submit_section">
+          <Button text="Show me my options" onClick={() => this.props.onSubmit(cardIds)}/>          
+        </div>
       </div>
     );
   }
