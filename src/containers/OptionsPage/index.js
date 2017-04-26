@@ -19,7 +19,9 @@ class OptionsPage extends Component {
           </div>
           {options}
         </div>
-        <div className="actions_section"></div>
+        <div className="actions_section">
+          
+        </div>
       </div>
     );
   }
