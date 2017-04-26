@@ -33,8 +33,10 @@ const initialState = {
       selected: false
     },
   ],
-  selectedOptions: [
-  ],
+  selectedOptions: {
+    currentOption: null,
+    options: []
+  },
   nav: MAIN_PAGE
 };
 

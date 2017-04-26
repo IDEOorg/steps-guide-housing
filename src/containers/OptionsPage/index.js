@@ -8,8 +8,9 @@ import optionsData from '../../store/data/options';
 
 class OptionsPage extends Component {
   render() {
-    const options = this.props.selectedOptions.map((option, i) => {
-      return <Option key={option.id} selected={option.selected} order={i + 1} text={optionsData[option.id]["text"]} onSelect={() => this.props.onSelect(option.id)}/>  
+    const currentOption = this.props.currentOption;
+    const options = this.props.options.map((id, i) => {
+      return <Option key={id} selected={id === currentOption ? true : false} order={i + 1} text={optionsData[id]["text"]} onSelect={() => this.props.onSelect(id)}/>
     }
     );
     return (
@@ -31,7 +32,8 @@ class OptionsPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    selectedOptions: state.selectedOptions
+    options: state.selectedOptions.options,
+    currentOption: state.selectedOptions.currentOption
   };
 }
 

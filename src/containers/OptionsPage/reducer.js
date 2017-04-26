@@ -1,7 +1,7 @@
 import { GENERATE_OPTIONS, SELECT_OPTION } from './constants';
 import cardsData from '../../store/data/cards';
 
-const selectedOptions = (state = [], action) => {
+const selectedOptions = (state = {}, action) => {
   switch (action.type) {
     case GENERATE_OPTIONS: {
       let cardIds = action.cardIds;
@@ -15,35 +15,16 @@ const selectedOptions = (state = [], action) => {
           }
         }
       }
-      let outcome = distinctOptionIds.map((id, i) => {
-        let option = {
-          id,
-          selected: false
-        };
-        if(i === 0) {
-          return {
-            ...option,
-            selected: true
-          };
-        }
-        return option;
-      });
-      return outcome;
+      return {
+        currentOption: distinctOptionIds ? distinctOptionIds[0] : null,
+        options: distinctOptionIds
+      }
     }
     case SELECT_OPTION: {
-
-      return state.map((option) => {
-        if(option.id === action.id) {
-          return {
-            ...option,
-            selected: true
-          }
-        }
-        return {
-          ...option,
-          selected: false
-        };
-      });
+      return {
+        ...state,
+        currentOption: action.id
+      }
     }
     default:
       return state;
