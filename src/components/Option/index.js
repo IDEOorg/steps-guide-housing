@@ -4,8 +4,14 @@ import Link from '../Link';
 
 export default class Option extends Component {
   render() {
+    let optionStyles;
+    if(this.props.selected) {
+      optionStyles = {
+        background: 'green'
+      };
+    }
     return (
-      <div className="option">
+      <div className="option" style={optionStyles} onClick={this.props.onSelect}>
         <div className="option_container">
           <div className="order_tag">
             <p>{this.props.order}</p>

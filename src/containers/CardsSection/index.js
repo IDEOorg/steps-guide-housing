@@ -3,14 +3,12 @@ import { connect } from 'react-redux';
 import './index.less';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
-import { generateOptions, selectCard } from './actions';
+import { selectCard } from './actions';
+import { generateOptions } from '../OptionsPage/actions';
 import { changeNav } from '../App/actions';
 import { OPTIONS_PAGE } from '../App/constants';
 
 class CardsSection extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const cards = this.props.cards.map((card) =>
       <Card key={card.id} id={card.id} text={card.text} selected={card.selected} onSelect={this.props.onSelect}/>
@@ -24,7 +22,7 @@ class CardsSection extends Component {
           {cards}
         </div>
         <div className="submit_section">
-          <Button text="Show me my options" onClick={() => this.props.onSubmit(cardIds)}/>          
+          <Button text="Show me my options" onClick={() => this.props.onSubmit(cardIds)}/>
         </div>
       </div>
     );

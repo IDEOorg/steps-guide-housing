@@ -1,21 +1,49 @@
-import { GENERATE_OPTIONS } from './constants';
+import { GENERATE_OPTIONS, SELECT_OPTION } from './constants';
 import cardsData from '../../store/data/cards';
 
 const selectedOptions = (state = [], action) => {
   switch (action.type) {
     case GENERATE_OPTIONS: {
       let cardIds = action.cardIds;
-      let optionIds = [];
+      let distinctOptionIds = [];
       for(let i = 0; i < cardIds.length; i++) {
-        let options = cardsData[cardIds[i]].options;
-        for(let j = 0; j < options.length; j++) {
-          let optionId = options[j];
-          if(!optionIds.includes(optionId)) {
-            optionIds.push(optionId);
+        let optionIds = cardsData[cardIds[i]].options;
+        for(let j = 0; j < optionIds.length; j++) {
+          let optionId = optionIds[j];
+          if(!distinctOptionIds.includes(optionId)) {
+            distinctOptionIds.push(optionId);
           }
         }
       }
-      return optionIds;
+      let outcome = distinctOptionIds.map((id, i) => {
+        let option = {
+          id,
+          selected: false
+        };
+        if(i === 0) {
+          return {
+            ...option,
+            selected: true
+          };
+        }
+        return option;
+      });
+      return outcome;
+    }
+    case SELECT_OPTION: {
+
+      return state.map((option) => {
+        if(option.id === action.id) {
+          return {
+            ...option,
+            selected: true
+          }
+        }
+        return {
+          ...option,
+          selected: false
+        };
+      });
     }
     default:
       return state;

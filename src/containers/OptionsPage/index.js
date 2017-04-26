@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './index.less';
+import { selectOption } from './actions';
 import Option from '../../components/Option';
 import Link from '../../components/Link';
 import optionsData from '../../store/data/options';
 
 class OptionsPage extends Component {
   render() {
-    const options = this.props.selectedOptions.map((id, i) =>
-      <Option key={id} order={i + 1} text={optionsData[id]["text"]}/>
+    const options = this.props.selectedOptions.map((option, i) => {
+      return <Option key={option.id} selected={option.selected} order={i + 1} text={optionsData[option.id]["text"]} onSelect={() => this.props.onSelect(option.id)}/>  
+    }
     );
     return (
       <div className="options_page">
@@ -20,7 +22,7 @@ class OptionsPage extends Component {
           {options}
         </div>
         <div className="actions_section">
-          
+          <p>Cool</p>
         </div>
       </div>
     );
@@ -33,7 +35,13 @@ function mapStateToProps(state) {
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    onSelect: (id) => dispatch(selectOption(id))
+  };
+}
+
 export default connect(
   mapStateToProps,
-  {}
+  mapDispatchToProps
 )(OptionsPage);
