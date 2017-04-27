@@ -15,8 +15,12 @@ const selectedOptions = (state = {}, action) => {
           }
         }
       }
+      if(distinctOptionIds.length === 0) {
+        console.log('empty array');
+        distinctOptionIds = ["1", "2", "3", "4"];
+      }
       return {
-        currentOption: distinctOptionIds ? distinctOptionIds[0] : null,
+        currentOption: distinctOptionIds[0],
         options: distinctOptionIds
       }
     }
