@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './index.less';
 import CardsSection from '../CardsSection';
+const introImg = require('../../assets/logo.svg');
 
 export default class MainPage extends Component {
   render() {
@@ -11,7 +12,7 @@ export default class MainPage extends Component {
             <h1 className="intro_headline">I Can't Pay My Rent</h1>
             <p className="intro_tagline">There are still options to explore when you can't pay rent. To get started, choose all the statements on the right that apply to you.</p>
           </div>
-          <img className="intro_image" src="../assets/logo.svg" height="300px" width="300px"/>
+          <img className="intro_image" src={introImg} height="300px" width="300px"/>
         </div>
         <CardsSection />
       </div>
