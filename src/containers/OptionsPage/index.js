@@ -24,7 +24,7 @@ class OptionsPage extends Component {
       <div className="options_page">
         <div className="options_wrapper">
           <div className="options_section3">
-            <div className="options_section">
+            <div className="options_section" >
               <div className="options_intro_section">
                 <h2>What can you do?</h2>
                 <Link onClick={this.props.goBack}>Back to statements</Link>
