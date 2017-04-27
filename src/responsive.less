@@ -1,5 +1,11 @@
-.mobile(@maxWidth; @rules) {
-    @media (max-width: @maxWidth) {
+.mobile(@rules) {
+    @media only screen and (max-width: 600px) {
+        @rules();
+    }
+}
+
+.desktop(@rules) {
+    @media only screen and (min-width: 600px) {
         @rules();
     }
 }
