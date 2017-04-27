@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './index.less';
-import { selectOption } from './actions';
+import { selectOption, markTried } from './actions';
 import Option from '../../components/Option';
 import Action from '../../components/Action';
 import Link from '../../components/Link';
@@ -12,13 +12,31 @@ import { MAIN_PAGE } from '../App/constants';
 class OptionsPage extends Component {
   render() {
     const currentOption = this.props.currentOption;
-    const currentOptionHeadline = optionsData[currentOption]["text"];
-    const options = this.props.options.map((id, i) => {
-      return <Option key={id} selected={id === currentOption ? true : false} order={i + 1} text={optionsData[id]["text"]} onSelect={() => this.props.onSelect(id)}/>
+    const optionsWithActions = this.props.options.filter((option) => !option.tried).map((option) => {
+      let id = option.id;
+      let optionId = id;
+      let actions = optionsData[id]["actions"].map((action) => {
+        return <Action key={action.id} headline={action.headline} text={action.text} />
+      });
+      return {
+        optionId,
+        actions
+      };
+    });
+    const options = optionsWithActions.map((optionAndAction, i) => {
+      let id = optionAndAction.optionId;
+      return <Option key={id} selected={id === currentOption ? true : false} order={i + 1} text={optionsData[id]["text"]} markTried={() => this.props.markTried(id)} onSelect={() => this.props.onSelect(id)}/>
     }
     );
-    const actions = optionsData[currentOption]["actions"].map((action) => {
-      return <Action key={action.id} headline={action.headline} text={action.text} />
+    const actionPlans = optionsWithActions.map((optionAndAction) => {
+      return (<div key={optionAndAction.optionId}>
+        <div className="actions_headline_section">
+          <h1 className="actions_option_headline">
+            {optionsData[optionAndAction.optionId]["text"]}
+          </h1>
+        </div>
+        {optionAndAction.actions}
+      </div>);
     });
     return (
       <div className="options_page">
@@ -35,12 +53,7 @@ class OptionsPage extends Component {
         </div>
         <div className="options_filler"></div>
         <div className="actions_section">
-          <div className="actions_headline_section">
-            <h1 className="actions_option_headline">
-              {currentOptionHeadline}
-            </h1>
-          </div>
-          {actions}
+          {actionPlans}
         </div>
       </div>
     );
@@ -57,7 +70,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     goBack: () => dispatch(changeNav(MAIN_PAGE)),
-    onSelect: (id) => dispatch(selectOption(id))
+    onSelect: (id) => dispatch(selectOption(id)),
+    markTried: (id) => dispatch(markTried(id))
   };
 }
 

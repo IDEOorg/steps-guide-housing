@@ -1,13 +1,21 @@
+@import '../../responsive.less';
+
 .cards_page {
-  width: 66.66666666667%;
-  height: 100%;
-  overflow-y: scroll;
+  .desktop({
+    width: 66.66666666667%;
+  });
+  .mobile({
+    width: 100%;
+  });
+  overflow-y: auto;
   padding: 5% 0;
 }
 .cards_section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  .desktop({
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    });
 }
 
 .submit_section {

@@ -17,7 +17,7 @@ export default class Option extends Component {
             <p>{this.props.order}</p>
           </div>
           <h4 className="option_headline">{this.props.text}</h4>
-          <Link>I've already tried this.</Link>
+          <Link onClick={this.props.markTried}>I've already tried this.</Link>
         </div>
       </div>
     );

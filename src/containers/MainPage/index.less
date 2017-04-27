@@ -27,14 +27,17 @@
 .intro_image {
   margin: 0 auto;
   .mobile({
-    display: none;
-    });
+    order: 1;
+  });
 }
 
 .intro_main_intro {
   text-align: center;
   margin: 0 auto;
   width: 70%;
+  .mobile({
+    order: 2;
+  });
   .intro_headline {
     font-weight: 600;
     font-size: 1.75em;
