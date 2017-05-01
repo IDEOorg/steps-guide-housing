@@ -14,14 +14,14 @@ class OptionsPage extends Component {
      super(props);
   }
   onScroll() {
-    let actionPlans = this.input.children;
+    let actionPlans = this.actionSection.children;
     let height = Math.max(document.documentElement.clientHeight, window.innerHeight);
     let currentOptionHeight = -1;
     let currentOption = null;
-    console.log(actionPlans);
     for(let i = 0; i < actionPlans.length; i++) {
       let actionPlanHeight = actionPlans[i].getBoundingClientRect().top;
-      if(actionPlanHeight >= 0 && actionPlanHeight < (height / 2) && actionPlanHeight > currentOptionHeight) {
+      console.log(actionPlanHeight);
+      if(actionPlanHeight >= 0 && actionPlanHeight <= (height / 4) && actionPlanHeight > currentOptionHeight) {
         currentOptionHeight = actionPlanHeight;
         currentOption = actionPlans[i].dataset.option;
       }
@@ -30,13 +30,25 @@ class OptionsPage extends Component {
       this.props.toggleOption(currentOption);
     }
   }
+  onOptionSelect(id) {
+    let height = Math.max(document.documentElement.clientHeight, window.innerHeight);
+    if(id !== this.props.currentOption) {
+      let actionPlans = this.actionSection.children;
+      for(let i = 0; i < actionPlans.length; i++) {
+        if(actionPlans[i].dataset.option === id) {
+          this.actionSection.scrollTop += actionPlans[i].getBoundingClientRect().top - height / 4;
+          return;
+        }
+      }
+    }
+  }
   render() {
     const currentOption = this.props.currentOption;
     const optionsWithActions = this.props.options.filter((option) => !option.tried).map((option) => {
       let id = option.id;
       let optionId = id;
       let actions = optionsData[id]["actions"].map((action) => {
-        return <Action key={action.id} headline={action.headline} text={action.text} />;
+        return <Action key={action.id} img={require('../../assets/' + action.img)} headline={action.headline} text={action.text} />;
       });
       return {
         optionId,
@@ -45,7 +57,11 @@ class OptionsPage extends Component {
     });
     const options = optionsWithActions.map((optionAndAction, i) => {
       let id = optionAndAction.optionId;
-      return <Option key={id} selected={id === currentOption ? true : false} order={i + 1} text={optionsData[id]["text"]} markTried={() => this.props.markTried(id)} onSelect={() => this.props.onSelect(id)}/>;
+      return <Option key={id}
+        selected={id === currentOption}
+        order={i + 1} text={optionsData[id]["text"]}
+        markTried={() => this.props.markTried(id)}
+        onSelect={() => {this.onOptionSelect(id); this.props.onSelect(id);}}/>;
     }
     );
     const actionPlans = optionsWithActions.map((optionAndAction) => {
@@ -61,19 +77,15 @@ class OptionsPage extends Component {
     });
     return (
       <div className="options_page">
-        <div className="options_wrapper">
-          <div className="options_section3">
-            <div className="options_section" >
-              <div className="options_intro_section">
-                <h2>What can you do?</h2>
-                <Link onClick={this.props.goBack}>Back to statements</Link>
-              </div>
-              {options}
-            </div>
+        <div className="options_section" >
+          <div className="options_intro_section">
+            <h1 className="options_intro_headline">What can you do?</h1>
+            <Link className="options_intro_back" onClick={this.props.goBack}>Back to statements</Link>
           </div>
+          {options}
         </div>
         <div className="options_filler"></div>
-        <div className="actions_section" ref={(input) => {this.input = input;}} onScroll={() => {this.onScroll();}}>
+        <div className="actions_section" ref={(actionSection) => {this.actionSection = actionSection;}} onScroll={() => {this.onScroll();}}>
           {actionPlans}
         </div>
       </div>

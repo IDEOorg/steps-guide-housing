@@ -7,7 +7,8 @@ export default class Option extends Component {
     let optionStyles;
     if(this.props.selected) {
       optionStyles = {
-        background: 'rgb(250,251,252)'
+        background: '#f4f7ff',
+        opacity: 1
       };
     }
     return (
@@ -16,7 +17,7 @@ export default class Option extends Component {
           <div className="order_tag">
             <p>{this.props.order}</p>
           </div>
-          <h4 className="option_headline">{this.props.text}</h4>
+          <h2 className="option_headline">{this.props.text}</h2>
           <Link onClick={this.props.markTried}>I've already tried this.</Link>
         </div>
       </div>

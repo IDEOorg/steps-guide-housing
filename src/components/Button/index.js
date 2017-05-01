@@ -4,8 +4,8 @@ import './index.less';
 export default class Button extends Component {
   render() {
     const styles = {
-      height: '80px',
-      width: '80%'
+      height: '3.75em',
+      width: '91.2%'
     }
     return (
       <div className="button" style={styles} onClick={this.props.onClick}>

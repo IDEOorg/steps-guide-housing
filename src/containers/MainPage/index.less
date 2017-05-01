@@ -20,12 +20,15 @@
   background: white;
   display: flex;
   flex-wrap: wrap;
-  align-content: space-between;
+  align-content: center;
   border-right: 2px solid rgb(220,221,222);
 }
 
 .intro_image {
   margin: 0 auto;
+  .desktop({
+    margin-bottom: 1.75em;
+  });
   .mobile({
     order: 1;
   });
@@ -39,12 +42,12 @@
     order: 2;
   });
   .intro_headline {
-    font-weight: 600;
-    font-size: 1.75em;
+    letter-spacing: -0.03125em;
+    margin-bottom: 0.625em;
   }
   .intro_tagline {
-    font-size: 0.875em;
-    font-weight: 600;
-    color: rgb(130,130,130);
+    letter-spacing: 0.01875em;
+    color: #7c8188;
+    line-height: 1.35714285714em;
   }
 }
