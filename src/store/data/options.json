@@ -41,36 +41,69 @@
         "id": "2",
         "img": "utility-icon-2.svg",
         "headline": "Find government assistance",
-        "text": "Many state and local government agencies have alternative assistance programs for utilities. Find out more here:"
+        "text": "Many state and local government agencies have alternative assistance programs for utilities. Find out more here:",
+        "link": {
+          "text": "GO TO UTILITYBILLASSISTANCE.COM",
+          "url": "http://www.utilitybillassistance.com"
+        }
       },
       {
         "id": "3",
         "img": "utility-icon-3.svg",
         "headline": "Apply for LIHEAP",
-        "text": "Assistance is available throug the federal Low-Income Home Energy Assistance Program (each state has their own set of qualifications)."
+        "text": "Assistance is available throug the federal Low-Income Home Energy Assistance Program (each state has their own set of qualifications).",
+        "criteria": {
+          "criteria": [
+            "Residents with very young children, elderly, or disabled family members.",
+            "Homes with low-incomes and high regional costs."
+          ],
+          "link": {
+            "text": "FIND YOUR STATE'S CONTACT INFORMATION",
+            "url": "https://liheapch.acf.hhs.gov/db/index.php"
+          }
+        }
       }
     ]
   },
   "3": {
-    "text": "Get help from a charity",
+    "text": "Get emergency money",
     "actions": [
       {
         "id": "1",
         "img": "charity-icon-1.svg",
         "headline": "Contact your local 2-1-1",
-        "text": "They can connect you with resources related to housing (availability varies by location)."
+        "text": "They can connect you with resources related to housing (availability varies by location).",
+        "zipcode": {
+          "link": {
+            "text": "FIND YOUR LOCAL 2-1-1",
+            "urlTemplateStart": "http://211.org/search?zip=",
+            "urlTemplateEnd": "&city=&state="
+          }
+        }
       },
       {
         "id": "2",
         "img": "charity-icon-2.svg",
         "headline": "Find a Catholic Charities agency",
-        "text": "They can help you with services related to housing (availability varies by location)."
+        "text": "They can help you with services related to housing (availability varies by location).",
+        "zipcode": {
+          "link": {
+            "text": "FIND YOUR LOCAL CATHOLIC CHARITIES",
+            "urlTemplateStart": "https://catholiccharitiesusa.org/find-help?near=",
+            "urlTemplateEnd": "#results"
+
+          }
+        }
       },
       {
         "id": "3",
         "img": "charity-icon-3.jpg",
         "headline": "Apply for a Modest Needs grant",
-        "text": "These small, emergency grants are allocated to low-income workers. Find out more by visiting their website."
+        "text": "These small, emergency grants are allocated to low-income workers. Find out more by visiting their website.",
+        "link": {
+          "text": "GO TO MODESTNEEDS.ORG",
+          "url": "https://modestneeds.org"
+        }
       }
     ]
   },
@@ -81,7 +114,14 @@
         "id": "1",
         "img": "advice-icon-1.svg",
         "headline": "Talk to a counselor",
-        "text": "If you won't be able to pay your rent for a while, the best thing you can do right now is get personalized advice from a counselor."
+        "text": "If you won't be able to pay your rent for a while, the best thing you can do right now is get personalized advice from a counselor.",
+        "zipcode": {
+          "link": {
+            "text": "FIND A HOUSING COUNSELOR NEAR YOU",
+            "urlTemplateStart": "https://www.consumerfinance.gov/find-a-housing-counselor/",
+            "urlTemplateEnd": ""
+          }
+        }
       }
     ]
   },
@@ -121,7 +161,11 @@
         "id": "1",
         "img": "legal-icon-1.svg",
         "headline": "Save the documents and seek help",
-        "text": "Save all documents and seek help immediately. Save all notics and communications from your landlord, any lawyers, or courts. Understand the eviction process, your rights, and your options by speaking with a Legal Aid attorney."
+        "text": "Save all documents and seek help immediately. Save all notics and communications from your landlord, any lawyers, or courts. Understand the eviction process, your rights, and your options by speaking with a Legal Aid attorney.",
+        "link": {
+          "text": "FIND LEGAL HELP NEAR YOU NOW",
+          "url": "http://www.lawhelp.org/find-help"
+        }
       }
     ]
   },
@@ -132,7 +176,11 @@
         "id": "1",
         "img": "unemployment-icon-1.svg",
         "headline": "Apply for unemployment benefits",
-        "text": "It's important to file as soon as possible as application processing, approval and first payment can take a few weeks."
+        "text": "It's important to file as soon as possible as application processing, approval and first payment can take a few weeks.",
+        "link": {
+          "text": "FIND UNEMPLOYMENT BENEFITS",
+          "url": "https://www.careeronestop.org/localhelp/unemploymentbenefits/unemployment-benefits.aspx"
+        }
       }
     ]
   },
@@ -143,7 +191,11 @@
         "id": "1",
         "img": "benefits-icon-1.svg",
         "headline": "Take the Benefits assessment",
-        "text": "Government benefits can assist with a variety of costs from food to health coverage. Even if you can't get help directly with your rent, you may find you qualify for something that frees up money to help put towards your rent."
+        "text": "Government benefits can assist with a variety of costs from food to health coverage. Even if you can't get help directly with your rent, you may find you qualify for something that frees up money to help put towards your rent.",
+        "link": {
+          "text": "GO TO BENEFITS.GOV",
+          "url": "https://www.benefits.gov"
+        }
       }
     ]
   }

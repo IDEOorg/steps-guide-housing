@@ -9,7 +9,7 @@ export default class Button extends Component {
     }
     return (
       <div className="button" style={styles} onClick={this.props.onClick}>
-        <h4 className="button_text">{this.props.text}</h4>
+        <h4 className="button_text">{this.props.children}</h4>
       </div>
     );
   }

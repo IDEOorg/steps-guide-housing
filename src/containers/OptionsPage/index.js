@@ -4,7 +4,10 @@ import './index.less';
 import { selectOption, markTried, toggleOption } from './actions';
 import Option from '../../components/Option';
 import Action from '../../components/Action';
+import Button from '../../components/Button';
 import Link from '../../components/Link';
+import ZipcodeBox from '../../components/ZipcodeBox';
+import CriteriaBox from '../../components/CriteriaBox';
 import optionsData from '../../store/data/options';
 import { changeNav } from '../App/actions';
 import { MAIN_PAGE } from '../App/constants';
@@ -48,7 +51,28 @@ class OptionsPage extends Component {
       let id = option.id;
       let optionId = id;
       let actions = optionsData[id]["actions"].map((action) => {
-        return <Action key={action.id} img={require('../../assets/' + action.img)} headline={action.headline} text={action.text} />;
+        let actionItem;
+        if(action.link) {
+          actionItem = (<Button>
+            {action.link.text}
+          </Button>);
+        }
+        else if(action.criteria) {
+          actionItem = (<CriteriaBox criteria={action.criteria.criteria}>
+            <Button>
+              {action.criteria.link.text}
+            </Button>
+          </CriteriaBox>);
+        }
+        else if(action.zipcode) {
+          actionItem = (<ZipcodeBox
+            urlStart={action.zipcode.link.urlTemplateStart}
+            urlEnd={action.zipcode.link.urlTemplateEnd}
+            buttonText={action.zipcode.link.text}/>);
+        }
+        return (<Action key={action.id} img={require('../../assets/' + action.img)} headline={action.headline} text={action.text}>
+        {actionItem}
+      </Action>);
       });
       return {
         optionId,
