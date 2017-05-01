@@ -66,7 +66,7 @@ class OptionsPage extends Component {
     );
     const actionPlans = optionsWithActions.map((optionAndAction) => {
       return (
-        <div key={optionAndAction.optionId} data-option={optionAndAction.optionId}>
+        <div className="action_plan" key={optionAndAction.optionId} data-option={optionAndAction.optionId}>
           <div className="actions_headline_section">
             <h1 className="actions_option_headline">
               {optionsData[optionAndAction.optionId]["text"]}
