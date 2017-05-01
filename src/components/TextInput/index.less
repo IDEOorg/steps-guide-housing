@@ -1,0 +1,38 @@
+input[type="text"].textinput {
+  border-radius: 0.25em;
+  border: 1px solid rgb(180,180,180);
+  width: 200px;
+  height: 30px;
+  font-family: 'Poppins';
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(70,70,70,0.7);
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border: 1px solid rgba(70,70,70,0.7);
+  }
+
+.placeholder() {
+  color: rgba(70,70,70,0.3);
+  font-family: 'Poppins';
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.textinput::-webkit-input-placeholder {
+  .placeholder();
+}
+
+.textinput::-moz-placeholder {
+  .placeholder();
+  opacity: 1;
+}
+
+.textinput:-ms-input-placeholder {
+  .placeholder();
+}
