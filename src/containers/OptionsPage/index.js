@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import MediaQuery from 'react-responsive';
 import './index.less';
 import { selectOption, markTried, toggleOption } from './actions';
 import Option from '../../components/Option';
@@ -52,13 +53,15 @@ class OptionsPage extends Component {
         actions
       };
     });
+
+    // desktop
     const options = optionsWithActions.map((optionAndAction, i) => {
       let id = optionAndAction.optionId;
-      return <Option key={id}
+      return (<Option key={id}
         selected={id === currentOption}
         order={i + 1} text={optionsData[id]["text"]}
         markTried={() => {}}
-        onSelect={() => {this.onOptionSelect(id); this.props.onSelect(id);}}/>;
+        onSelect={() => {this.onOptionSelect(id); this.props.onSelect(id);}}/>);
     }
     );
     const actionPlans = optionsWithActions.map((optionAndAction) => {
@@ -70,19 +73,56 @@ class OptionsPage extends Component {
           headline={optionsData[optionAndAction.optionId]["text"]}
           actions={optionAndAction.actions}/>);
     });
-    return (
-      <div className="options_page">
-        <div className="options_section" >
-          <div className="options_intro_section">
-            <h1 className="options_intro_headline">What can you do?</h1>
-            <Link className="options_intro_back" onClick={this.props.goBack}>Back to statements</Link>
+    // mobile
+    const optionsActionsOutputMobile = optionsWithActions.map((optionAndAction, i) => {
+      let id = optionAndAction.optionId;
+      return (
+        <div>
+          <div className="option_box_mobile">
+            <Option key={id}
+              selected={id === currentOption}
+              order={i + 1} text={optionsData[id]["text"]}
+              markTried={() => {}}
+              onSelect={() => {this.onOptionSelect(id); this.props.onSelect(id);}}/>
           </div>
-          {options}
+          <div className="action_plan_mobile">
+            <ActionPlan
+              key={optionAndAction.optionId}
+              id={optionAndAction.optionId}
+              isCurrentOption={currentOption === optionAndAction.optionId}
+              headline={optionsData[optionAndAction.optionId]["text"]}
+              actions={optionAndAction.actions}/>
+          </div>
         </div>
-        <div className="options_filler"></div>
-        <div className="actions_section" ref={(actionSection) => {this.actionSection = actionSection;}} onScroll={() => {this.onScroll();}}>
-          {actionPlans}
-        </div>
+      )
+    });
+
+    return (
+      <div className="options_container">
+        <MediaQuery query='(min-width: 600px)'>
+          <div className="options_page">
+            <div className="options_section">
+              <div className="options_intro_section">
+                <h1 className="options_intro_headline">What can you do?</h1>
+                <Link className="options_intro_back" onClick={this.props.goBack}>Back to statements</Link>
+              </div>
+              {options}
+            </div>
+            <div className="options_filler"></div>
+            <div className="actions_section" ref={(actionSection) => {this.actionSection = actionSection;}} onScroll={() => {console.log('scrollling'); this.onScroll();}}>
+              {actionPlans}
+            </div>
+          </div>
+        </MediaQuery>
+        <MediaQuery query='(max-width: 600px)'>
+          <div className="options_page">
+            <div className="options_intro_section">
+              <h1 className="options_intro_headline">What can you do?</h1>
+              <Link className="options_intro_back" onClick={this.props.goBack}>Back to statements</Link>
+            </div>
+            { optionsActionsOutputMobile }
+          </div>
+        </MediaQuery>
       </div>
     );
   }

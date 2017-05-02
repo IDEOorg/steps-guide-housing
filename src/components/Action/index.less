@@ -1,9 +1,20 @@
+@import '../../responsive.less';
+
 .action {
   padding: 1.875em 0;
-  border-top: 1px solid rgb(220,221,222);
+  .desktop({
+    border-top: 1px solid rgb(220,221,222);
+  });
+  .mobile({
+    &:last-child { border-bottom: none; }
+    border-bottom: 1px solid rgb(220,221,222);
+    margin-top: 1em;
+  });
   .action_capsule {
-    display: flex;
-    align-items: center;
+    .desktop({
+      display: flex;
+      align-items: center;
+      });
   }
   .action_headline {
     font-size: 1em;
@@ -19,18 +30,27 @@
     color: #7c8188;
   }
   .action_img {
-    width: 33.3333333%;
-    height: 5em;
     display: flex;
     justify-content: center;
     align-items: center;
+    .desktop({
+      width: 33.3333333%;
+    });
+    .mobile({
+      width: 100%;
+      margin-bottom: 2em;
+    });
     img {
       display: block;
-      transform: scale(0.8);
+      .desktop({
+        transform: scale(0.8);
+      });
     }
   }
   .action_content {
-    width: 66.6666667%;
+    .desktop({
+      width: 66.6666667%;
+    });
   }
   .action_form {
     display: flex;

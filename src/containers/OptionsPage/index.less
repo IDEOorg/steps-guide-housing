@@ -1,7 +1,19 @@
-.options_page {
+@import '../../responsive.less';
+
+.options_container {
   width: 100%;
   height: 100%;
-  display: flex;
+}
+
+.options_page {
+  width: 100%;
+  min-height: 100%;
+  .desktop({
+    display: flex;
+  });
+  .mobile({
+    background: #fcfdff;
+    })
 }
 
 .options_filler {
