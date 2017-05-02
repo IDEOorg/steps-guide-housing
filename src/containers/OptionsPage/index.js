@@ -23,7 +23,6 @@ class OptionsPage extends Component {
     let currentOption = null;
     for(let i = 0; i < actionPlans.length; i++) {
       let actionPlanHeight = actionPlans[i].getBoundingClientRect().top;
-      console.log(actionPlanHeight);
       if(actionPlanHeight >= 0 && actionPlanHeight <= (height / 4) && actionPlanHeight > currentOptionHeight) {
         currentOptionHeight = actionPlanHeight;
         currentOption = actionPlans[i].dataset.option;
@@ -53,13 +52,13 @@ class OptionsPage extends Component {
       let actions = optionsData[id]["actions"].map((action) => {
         let actionItem;
         if(action.link) {
-          actionItem = (<Button>
+          actionItem = (<Button onClick={() => { window.open(action.link.url); }} textStyleClass="action_button_text" className="action_button">
             {action.link.text}
           </Button>);
         }
         else if(action.criteria) {
           actionItem = (<CriteriaBox criteria={action.criteria.criteria}>
-            <Button>
+            <Button onClick={() => { window.open(action.criteria.link.url); }} textStyleClass="action_button_text" className="action_button">
               {action.criteria.link.text}
             </Button>
           </CriteriaBox>);

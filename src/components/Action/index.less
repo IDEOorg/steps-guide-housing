@@ -1,8 +1,10 @@
 .action {
   padding: 1.875em 0;
   border-top: 1px solid rgb(220,221,222);
-  display: flex;
-  align-items: center;
+  .action_capsule {
+    display: flex;
+    align-items: center;
+  }
   .action_headline {
     font-size: 1em;
     font-weight: 600;
@@ -29,5 +31,13 @@
   }
   .action_content {
     width: 66.6666667%;
+  }
+  .action_form {
+    display: flex;
+    justify-content: flex-end;
+    .action_form_box {
+      padding-top: 1em;
+      width: 66.6666667%;
+    }
   }
 }

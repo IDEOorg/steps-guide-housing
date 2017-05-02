@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import './index.less';
 
 export default class Button extends Component {
   render() {
-    const styles = {
-      height: '3.75em',
-      width: '91.2%'
-    }
     return (
-      <div className="button" style={styles} onClick={this.props.onClick}>
-        <h4 className="button_text">{this.props.children}</h4>
+      <div className={classNames("button", this.props.className)} onClick={this.props.onClick}>
+        <h4 className={classNames("button_text", this.props.textStyleClass)}>
+          {this.props.children}
+        </h4>
       </div>
     );
   }

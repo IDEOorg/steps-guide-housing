@@ -22,7 +22,7 @@ class CardsSection extends Component {
           {cards}
         </div>
         <div className="submit_section">
-          <Button onClick={() => this.props.onSubmit(cardIds)}>
+          <Button textStyleClass="show_options_button_text" className="show_options_button" onClick={() => this.props.onSubmit(cardIds)}>
             Show me my options
           </Button>
         </div>

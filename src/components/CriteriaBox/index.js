@@ -6,7 +6,10 @@ export default class CriteriaBox extends Component {
     const criteria = this.props.criteria.map((criterion, i) => <li key={i}>{criterion}</li>);
     return (
       <div>
-        <ul>{criteria}</ul>
+        <div className="criteria_box">
+          <h5 className="criteria_tag">GENERAL CRITERIA</h5>
+          <ul className="criteria_list">{criteria}</ul>
+        </div>
         {this.props.children}
       </div>
     );
