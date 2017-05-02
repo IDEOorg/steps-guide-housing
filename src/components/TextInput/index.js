@@ -3,13 +3,14 @@ import classNames from 'classnames';
 import './index.less';
 
 export default class TextInput extends Component {
-  state = {
-    value: this.props.value ? this.props.value : ''
+  constructor(props) {
+    super(props);
+    this.state = {value: this.props.value ? this.props.value : ""};
+    this.handleChange = this.handleChange.bind(this);
   }
-  handleChange = (e) => {
+  handleChange(e) {
     this.setState({value: e.target.value}, () => {
       if(this.props.onChange) {
-        console.log(this.state.value);
         this.props.onChange(this.state.value);
       }
     });

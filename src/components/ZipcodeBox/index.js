@@ -4,8 +4,9 @@ import TextInput from '../TextInput';
 import './index.less';
 
 export default class ZipcodeBox extends Component {
-  state = {
-    inputText: ''
+  constructor(props) {
+    super(props);
+    this.state = {inputText: ''};
   }
   render() {
     return (
@@ -13,7 +14,7 @@ export default class ZipcodeBox extends Component {
         <div className="zipcode_input_box">
           <TextInput
             className="zipcode_input"
-            onChange={(value) => {this.setState({inputText: value})}}
+            onChange={(value) => {this.setState({inputText: value});}}
             placeholder="MY ZIP CODE"
             value={this.state.inputText}/>
         </div>
