@@ -4,6 +4,7 @@ import './index.less';
 import { selectOption, markTried, toggleOption } from './actions';
 import Option from '../../components/Option';
 import Action from '../../components/Action';
+import ActionPlan from '../../components/ActionPlan';
 import Button from '../../components/Button';
 import Link from '../../components/Link';
 import ZipcodeBox from '../../components/ZipcodeBox';
@@ -22,7 +23,9 @@ class OptionsPage extends Component {
     let currentOptionHeight = -1;
     let currentOption = null;
     for(let i = 0; i < actionPlans.length; i++) {
+      console.log(actionPlans[i]);
       let actionPlanHeight = actionPlans[i].getBoundingClientRect().top;
+      console.log(actionPlanHeight);
       if(actionPlanHeight >= 0 && actionPlanHeight <= (height / 4) && actionPlanHeight > currentOptionHeight) {
         currentOptionHeight = actionPlanHeight;
         currentOption = actionPlans[i].dataset.option;
@@ -89,14 +92,13 @@ class OptionsPage extends Component {
     );
     const actionPlans = optionsWithActions.map((optionAndAction) => {
       return (
-        <div className="action_plan" key={optionAndAction.optionId} data-option={optionAndAction.optionId}>
-          <div className="actions_headline_section">
-            <h1 className="actions_option_headline">
-              {optionsData[optionAndAction.optionId]["text"]}
-            </h1>
-          </div>
+        <ActionPlan
+          key={optionAndAction.optionId}
+          id={optionAndAction.optionId}
+          isCurrentOption={currentOption === optionAndAction.optionId}
+          headline={optionsData[optionAndAction.optionId]["text"]}>
           {optionAndAction.actions}
-        </div>);
+        </ActionPlan>);
     });
     return (
       <div className="options_page">
