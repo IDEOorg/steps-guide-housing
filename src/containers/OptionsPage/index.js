@@ -83,7 +83,7 @@ class OptionsPage extends Component {
       return <Option key={id}
         selected={id === currentOption}
         order={i + 1} text={optionsData[id]["text"]}
-        markTried={() => this.props.markTried(id)}
+        markTried={() => {}}
         onSelect={() => {this.onOptionSelect(id); this.props.onSelect(id);}}/>;
     }
     );

@@ -115,12 +115,9 @@
         "img": "advice-icon-1.svg",
         "headline": "Talk to a counselor",
         "text": "If you won't be able to pay your rent for a while, the best thing you can do right now is get personalized advice from a counselor.",
-        "zipcode": {
-          "link": {
-            "text": "FIND A HOUSING COUNSELOR NEAR YOU",
-            "urlTemplateStart": "https://www.consumerfinance.gov/find-a-housing-counselor/",
-            "urlTemplateEnd": ""
-          }
+        "link": {
+          "text": "FIND A HOUSING COUNSELOR NEAR YOU",
+          "url": "https://www.consumerfinance.gov/find-a-housing-counselor/"
         }
       }
     ]
