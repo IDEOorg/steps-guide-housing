@@ -16,6 +16,7 @@
   });
   .mobile({
     width: 100%;
+    padding-bottom: 1.5625em;
   });
   background: white;
   display: flex;
@@ -27,9 +28,15 @@
 .intro_image {
   margin: 0 auto;
   .desktop({
+    width: 70%;
+    height: auto;
     margin-bottom: 1.75em;
   });
   .mobile({
+    width: 100%;
+    height: auto;
+    margin-top: 2.375em;
+    margin-bottom: 1.5625em;
     order: 1;
   });
 }
@@ -37,9 +44,12 @@
 .intro_main_intro {
   text-align: center;
   margin: 0 auto;
-  width: 70%;
+  .desktop({
+    width: 70%;
+  });
   .mobile({
     order: 2;
+    width: 90%;
   });
   .intro_headline {
     letter-spacing: -0.03125em;

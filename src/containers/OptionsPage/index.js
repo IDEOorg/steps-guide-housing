@@ -3,12 +3,8 @@ import { connect } from 'react-redux';
 import './index.less';
 import { selectOption, markTried, toggleOption } from './actions';
 import Option from '../../components/Option';
-import Action from '../../components/Action';
 import ActionPlan from '../../components/ActionPlan';
-import Button from '../../components/Button';
 import Link from '../../components/Link';
-import ZipcodeBox from '../../components/ZipcodeBox';
-import CriteriaBox from '../../components/CriteriaBox';
 import optionsData from '../../store/data/options';
 import { changeNav } from '../App/actions';
 import { MAIN_PAGE } from '../App/constants';
@@ -23,9 +19,7 @@ class OptionsPage extends Component {
     let currentOptionHeight = -1;
     let currentOption = null;
     for(let i = 0; i < actionPlans.length; i++) {
-      console.log(actionPlans[i]);
       let actionPlanHeight = actionPlans[i].getBoundingClientRect().top;
-      console.log(actionPlanHeight);
       if(actionPlanHeight >= 0 && actionPlanHeight <= (height / 4) && actionPlanHeight > currentOptionHeight) {
         currentOptionHeight = actionPlanHeight;
         currentOption = actionPlans[i].dataset.option;
@@ -52,30 +46,7 @@ class OptionsPage extends Component {
     const optionsWithActions = this.props.options.filter((option) => !option.tried).map((option) => {
       let id = option.id;
       let optionId = id;
-      let actions = optionsData[id]["actions"].map((action) => {
-        let actionItem;
-        if(action.link) {
-          actionItem = (<Button onClick={() => { window.open(action.link.url); }} textStyleClass="action_button_text" className="action_button">
-            {action.link.text}
-          </Button>);
-        }
-        else if(action.criteria) {
-          actionItem = (<CriteriaBox criteria={action.criteria.criteria}>
-            <Button onClick={() => { window.open(action.criteria.link.url); }} textStyleClass="action_button_text" className="action_button">
-              {action.criteria.link.text}
-            </Button>
-          </CriteriaBox>);
-        }
-        else if(action.zipcode) {
-          actionItem = (<ZipcodeBox
-            urlStart={action.zipcode.link.urlTemplateStart}
-            urlEnd={action.zipcode.link.urlTemplateEnd}
-            buttonText={action.zipcode.link.text}/>);
-        }
-        return (<Action key={action.id} img={require('../../assets/' + action.img)} headline={action.headline} text={action.text}>
-        {actionItem}
-      </Action>);
-      });
+      let actions = optionsData[id]["actions"];
       return {
         optionId,
         actions
@@ -96,9 +67,8 @@ class OptionsPage extends Component {
           key={optionAndAction.optionId}
           id={optionAndAction.optionId}
           isCurrentOption={currentOption === optionAndAction.optionId}
-          headline={optionsData[optionAndAction.optionId]["text"]}>
-          {optionAndAction.actions}
-        </ActionPlan>);
+          headline={optionsData[optionAndAction.optionId]["text"]}
+          actions={optionAndAction.actions}/>);
     });
     return (
       <div className="options_page">
