@@ -10,7 +10,7 @@ export default class ZipcodeBox extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="zipcode_box">
         <div className="zipcode_input_box">
           <TextInput
             className="zipcode_input"

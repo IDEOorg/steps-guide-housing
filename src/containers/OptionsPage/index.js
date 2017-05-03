@@ -4,8 +4,8 @@ import MediaQuery from 'react-responsive';
 import './index.less';
 import { selectOption, markTried, toggleOption } from './actions';
 import Option from '../../components/Option';
+import OptionsIntro from '../../components/OptionsIntro';
 import ActionPlan from '../../components/ActionPlan';
-import Link from '../../components/Link';
 import optionsData from '../../store/data/options';
 import { changeNav } from '../App/actions';
 import { MAIN_PAGE } from '../App/constants';
@@ -13,6 +13,9 @@ import { MAIN_PAGE } from '../App/constants';
 class OptionsPage extends Component {
   constructor(props){
      super(props);
+  }
+  componentWillMount() {
+    window.scrollTo(0,0);
   }
   onScroll() {
     let actionPlans = this.actionSection.children;
@@ -30,13 +33,12 @@ class OptionsPage extends Component {
       this.props.toggleOption(currentOption);
     }
   }
-  onOptionSelect(id) {
-    let height = Math.max(document.documentElement.clientHeight, window.innerHeight);
+  scrollOnOptionSelect(id) {
     if(id !== this.props.currentOption) {
       let actionPlans = this.actionSection.children;
       for(let i = 0; i < actionPlans.length; i++) {
         if(actionPlans[i].dataset.option === id) {
-          this.actionSection.scrollTop += actionPlans[i].getBoundingClientRect().top - height / 4;
+          this.actionSection.scrollTop += actionPlans[i].getBoundingClientRect().top - 20;
           return;
         }
       }
@@ -61,7 +63,7 @@ class OptionsPage extends Component {
         selected={id === currentOption}
         order={i + 1} text={optionsData[id]["text"]}
         markTried={() => {}}
-        onSelect={() => {this.onOptionSelect(id); this.props.onSelect(id);}}/>);
+        onSelect={() => {this.scrollOnOptionSelect(id); this.props.onSelect(id);}}/>);
     }
     );
     const actionPlans = optionsWithActions.map((optionAndAction) => {
@@ -77,13 +79,13 @@ class OptionsPage extends Component {
     const optionsActionsOutputMobile = optionsWithActions.map((optionAndAction, i) => {
       let id = optionAndAction.optionId;
       return (
-        <div>
+        <div key={id}>
           <div className="option_box_mobile">
             <Option key={id}
               selected={id === currentOption}
               order={i + 1} text={optionsData[id]["text"]}
               markTried={() => {}}
-              onSelect={() => {this.onOptionSelect(id); this.props.onSelect(id);}}/>
+              onSelect={() => {this.props.onSelect(id);}}/>
           </div>
           <div className="action_plan_mobile">
             <ActionPlan
@@ -102,10 +104,7 @@ class OptionsPage extends Component {
         <MediaQuery query='(min-width: 600px)'>
           <div className="options_page">
             <div className="options_section">
-              <div className="options_intro_section">
-                <h1 className="options_intro_headline">What can you do?</h1>
-                <Link className="options_intro_back" onClick={this.props.goBack}>Back to statements</Link>
-              </div>
+              <OptionsIntro goBack={this.props.goBack} />
               {options}
             </div>
             <div className="options_filler"></div>
@@ -116,10 +115,7 @@ class OptionsPage extends Component {
         </MediaQuery>
         <MediaQuery query='(max-width: 600px)'>
           <div className="options_page">
-            <div className="options_intro_section">
-              <h1 className="options_intro_headline">What can you do?</h1>
-              <Link className="options_intro_back" onClick={this.props.goBack}>Back to statements</Link>
-            </div>
+            <OptionsIntro goBack={this.props.goBack} />
             { optionsActionsOutputMobile }
           </div>
         </MediaQuery>

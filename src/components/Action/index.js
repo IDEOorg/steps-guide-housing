@@ -16,7 +16,7 @@ export default class Action extends Component {
         </div>
         <div className="action_form">
           <div className="action_form_box">
-            {this.props.children}            
+            {this.props.children}
           </div>
         </div>
       </div>

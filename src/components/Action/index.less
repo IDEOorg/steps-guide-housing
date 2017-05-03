@@ -2,6 +2,8 @@
 
 .action {
   padding: 1.875em 0;
+  margin: 0 auto;
+  width: 96%;
   .desktop({
     border-top: 1px solid rgb(220,221,222);
   });
@@ -54,10 +56,23 @@
   }
   .action_form {
     display: flex;
-    justify-content: flex-end;
+    width: 100%;
+    .desktop({
+      justify-content: flex-end;
+    });
+    .mobile({
+      justify-content: center;
+    });
     .action_form_box {
       padding-top: 1em;
-      width: 66.6666667%;
+      display: flex;
+      justify-content: center;
+      .desktop({
+        width: 66.6666667%;
+      });
+      .mobile({
+        width: 100%;
+      });
     }
   }
 }
