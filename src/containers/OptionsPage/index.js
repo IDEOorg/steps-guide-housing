@@ -107,7 +107,6 @@ class OptionsPage extends Component {
               <OptionsIntro goBack={this.props.goBack} />
               {options}
             </div>
-            <div className="options_filler"></div>
             <div className="actions_section" ref={(actionSection) => {this.actionSection = actionSection;}} onScroll={() => {console.log('scrollling'); this.onScroll();}}>
               {actionPlans}
             </div>

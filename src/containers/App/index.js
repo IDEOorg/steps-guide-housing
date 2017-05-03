@@ -19,7 +19,7 @@ class App extends Component {
       <div className="app">
         <Header />
         <div className="app_content">
-          {currentPage}          
+          {currentPage}
         </div>
       </div>
     );
