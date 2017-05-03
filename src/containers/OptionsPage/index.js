@@ -38,7 +38,7 @@ class OptionsPage extends Component {
       let actionPlans = this.actionSection.children;
       for(let i = 0; i < actionPlans.length; i++) {
         if(actionPlans[i].dataset.option === id) {
-          this.actionSection.scrollTop += actionPlans[i].getBoundingClientRect().top - 20;
+          this.actionSection.scrollTop += actionPlans[i].getBoundingClientRect().top - 20 - 50;
           return;
         }
       }

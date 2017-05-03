@@ -18,7 +18,9 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
-        {currentPage}
+        <div className="app_content">
+          {currentPage}          
+        </div>
       </div>
     );
   }

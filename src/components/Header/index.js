@@ -4,7 +4,9 @@ import './index.less';
 export default class Header extends Component {
   render() {
     return (
-      <div className="header">
+      <div>
+        <div className="header_filler"></div>
+        <div className="header"></div>
       </div>
     );
   }
