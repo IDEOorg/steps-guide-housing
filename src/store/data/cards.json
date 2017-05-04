@@ -1,7 +1,7 @@
 {
   "1": {
     "text": "I recently lost my income",
-    "options": ["1", "2", "3"]
+    "options": ["7", "3", "8", "4"]
   },
   "2": {
     "text": "I've missed rent payments in the past",
@@ -17,7 +17,7 @@
   },
   "5": {
     "text": "I won't be able to pay my rent for a while",
-    "options": ["1", "2", "3"]
+    "options": ["4"]
   },
   "6": {
     "text": "I'm getting eviction notices",
