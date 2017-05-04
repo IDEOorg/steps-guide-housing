@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '../Button';
 import TextInput from '../TextInput';
 import './index.less';
+const urlImg = require('../../assets/url-icon.svg');
 
 export default class ZipcodeBox extends Component {
   constructor(props) {
@@ -22,7 +23,9 @@ export default class ZipcodeBox extends Component {
             window.open(this.props.urlStart + this.state.inputText + this.props.urlEnd);
           }}
           textStyleClass="action_button_text"
-          className="action_button">{this.props.buttonText}
+          className="action_button">
+          <img style={{marginBottom: '0.15625em', marginRight: '0.75em'}} src={urlImg} />
+          {this.props.buttonText}
         </Button>
       </div>
     );

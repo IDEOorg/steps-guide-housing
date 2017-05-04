@@ -5,6 +5,7 @@ import ZipcodeBox from '../ZipcodeBox';
 import CriteriaBox from '../CriteriaBox';
 import classNames from 'classnames';
 import './index.less';
+const urlImg = require('../../assets/url-icon.svg');
 
 export default class ActionPlan extends Component {
   render() {
@@ -12,12 +13,14 @@ export default class ActionPlan extends Component {
     let actions = this.props.actions.map((action) => {
       if(action.link) {
         actionItem = (<Button onClick={() => { window.open(action.link.url); }} textStyleClass="action_button_text" className="action_button">
+          <img style={{marginBottom: '0.15625em', marginRight: '0.75em'}} src={urlImg} />
           {action.link.text}
         </Button>);
       }
       else if(action.criteria) {
         actionItem = (<CriteriaBox criteria={action.criteria.criteria}>
           <Button onClick={() => { window.open(action.criteria.link.url); }} textStyleClass="action_button_text" className="action_button">
+            <img style={{marginBottom: '0.15625em', marginRight: '0.75em'}} src={urlImg} />
             {action.criteria.link.text}
           </Button>
         </CriteriaBox>);
