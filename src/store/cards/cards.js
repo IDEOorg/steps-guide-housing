@@ -1,4 +1,11 @@
-import { SELECT_CARD } from './constants';
+export const SELECT_CARD = 'SELECT_CARD';
+
+export function selectCard(id) {
+  return {
+    type: SELECT_CARD,
+    id
+  };
+}
 
 const cards = (state = [], action) => {
   switch (action.type) {

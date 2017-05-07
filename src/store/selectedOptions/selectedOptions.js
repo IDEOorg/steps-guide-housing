@@ -1,5 +1,37 @@
-import { GENERATE_OPTIONS, SELECT_OPTION, MARK_TRIED, TOGGLE_OPTION } from './constants';
-import cardsData from '../../store/data/cards';
+import cardsData from '../../data/cards';
+
+export const GENERATE_OPTIONS = 'GENERATE_OPTIONS';
+export const SELECT_OPTION = 'SELECT_OPTION';
+export const MARK_TRIED = 'MARK_TRIED';
+export const TOGGLE_OPTION = 'TOGGLE_OPTION';
+
+export function generateOptions(ids) {
+  return {
+    type: GENERATE_OPTIONS,
+    cardIds: ids
+  };
+}
+
+export function selectOption(id) {
+  return {
+    type: SELECT_OPTION,
+    id
+  };
+}
+
+export function markTried(id) {
+  return {
+    type: MARK_TRIED,
+    id
+  };
+}
+
+export function toggleOption(id) {
+  return {
+    type: TOGGLE_OPTION,
+    id
+  };
+}
 
 function getDistinctOptionsFromCards(cardIds) {
   let distinctOptionIds = [];

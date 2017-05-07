@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import './index.less';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
-import { selectCard } from './actions';
-import { generateOptions } from '../OptionsPage/actions';
-import { changeNav } from '../App/actions';
-import { OPTIONS_PAGE } from '../App/constants';
+import { selectCard } from '../../store/cards/cards';
+import { generateOptions } from '../../store/selectedOptions/selectedOptions';
+import { changeNav, OPTIONS_PAGE } from '../../store/nav/nav';
 
 class CardsSection extends Component {
   render() {

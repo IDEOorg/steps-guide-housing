@@ -1,5 +1,5 @@
-import { MAIN_PAGE } from '../containers/App/constants';
-import cardsData from './data/cards';
+import { MAIN_PAGE } from './nav/nav';
+import cardsData from '../data/cards';
 
 const initialState = {
   cards: Object.keys(cardsData).map((id) => {

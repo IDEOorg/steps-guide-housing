@@ -1,6 +1,8 @@
 @import '../../responsive.less';
 
-.card {
+.card_box {
+  height: 12em;
+  overflow-y: hidden;
   .mobile({
     width: 90%;
     margin: 0 auto;
@@ -11,6 +13,9 @@
     width: 44%;
     margin: 1.5%
   });
+}
+.card {
+  width: 100%;
   padding: 3% 6%;
   min-height: 12em;
   background: white;

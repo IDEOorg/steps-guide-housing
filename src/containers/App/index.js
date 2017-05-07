@@ -4,7 +4,7 @@ import './index.less';
 import Header from '../../components/Header';
 import MainPage from '../MainPage';
 import OptionsPage from '../OptionsPage';
-import {MAIN_PAGE, OPTIONS_PAGE} from './constants';
+import {MAIN_PAGE, OPTIONS_PAGE} from '../../store/nav/nav';
 
 class App extends Component {
   render() {

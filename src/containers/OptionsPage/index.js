@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MediaQuery from 'react-responsive';
 import './index.less';
-import { selectOption, markTried, toggleOption } from './actions';
+import { selectOption, markTried, toggleOption } from '../../store/selectedOptions/selectedOptions';
 import Option from '../../components/Option';
 import OptionsIntro from '../../components/OptionsIntro';
 import ActionPlan from '../../components/ActionPlan';
-import optionsData from '../../store/data/options';
-import { changeNav } from '../App/actions';
-import { MAIN_PAGE } from '../App/constants';
+import optionsData from '../../data/options';
+import { changeNav, MAIN_PAGE } from '../../store/nav/nav';
 
 class OptionsPage extends Component {
   constructor(props){
@@ -96,7 +95,7 @@ class OptionsPage extends Component {
               actions={optionAndAction.actions}/>
           </div>
         </div>
-      )
+      );
     });
 
     return (
