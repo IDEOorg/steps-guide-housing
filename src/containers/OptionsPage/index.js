@@ -151,7 +151,7 @@ OptionsPage.propTypes = {
   currentOption: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
-    tried: PropTypes.boolean.isRequired
+    tried: PropTypes.bool.isRequired
     })
   ),
   toggleOption: PropTypes.func.isRequired,
