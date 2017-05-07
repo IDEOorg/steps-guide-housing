@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import MediaQuery from 'react-responsive';
 import './index.less';
@@ -100,18 +101,21 @@ class OptionsPage extends Component {
 
     return (
       <div className="options_container">
-        <MediaQuery query='(min-width: 600px)'>
+        <MediaQuery query="(min-width: 600px)">
           <div className="options_page">
             <div className="options_section">
               <OptionsIntro goBack={this.props.goBack} />
               {options}
             </div>
-            <div className="actions_section" ref={(actionSection) => {this.actionSection = actionSection;}} onScroll={() => {console.log('scrollling'); this.onScroll();}}>
+            <div
+              className="actions_section"
+              ref={(actionSection) => {this.actionSection = actionSection;}}
+              onScroll={() => {this.onScroll();}}>
               {actionPlans}
             </div>
           </div>
         </MediaQuery>
-        <MediaQuery query='(max-width: 600px)'>
+        <MediaQuery query="(max-width: 600px)">
           <div className="options_page">
             <OptionsIntro goBack={this.props.goBack} />
             { optionsActionsOutputMobile }
@@ -142,3 +146,15 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(OptionsPage);
+
+OptionsPage.propTypes = {
+  currentOption: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    tried: PropTypes.boolean.isRequired
+    })
+  ),
+  toggleOption: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  goBack: PropTypes.func.isRequired,
+};

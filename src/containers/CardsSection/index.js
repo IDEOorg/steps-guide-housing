@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './index.less';
 import Card from '../../components/Card';
@@ -10,7 +11,12 @@ import { changeNav, OPTIONS_PAGE } from '../../store/nav/nav';
 class CardsSection extends Component {
   render() {
     const cards = this.props.cards.map((card) =>
-      <Card key={card.id} id={card.id} text={card.text} selected={card.selected} onSelect={this.props.onSelect}/>
+      <Card
+        key={card.id}
+        id={card.id}
+        text={card.text}
+        selected={card.selected}
+        onSelect={this.props.onSelect}/>
     );
     const cardIds = this.props.cards
     .filter((card) => card.selected)
@@ -21,7 +27,10 @@ class CardsSection extends Component {
           {cards}
         </div>
         <div className="submit_section">
-          <Button textStyleClass="show_options_button_text" className="show_options_button" onClick={() => this.props.onSubmit(cardIds)}>
+          <Button
+            textStyleClass="show_options_button_text"
+            className="show_options_button"
+            onClick={() => this.props.onSubmit(cardIds)}>
             Show me my options
           </Button>
         </div>
@@ -50,3 +59,9 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(CardsSection);
+
+CardsSection.propTypes = {
+  cards: PropTypes.arrayOf(PropTypes.instanceOf(Card)).isRequired,
+  onSelect: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
+};

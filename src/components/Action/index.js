@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './index.less';
 
 export default class Action extends Component {
@@ -23,3 +24,10 @@ export default class Action extends Component {
     );
   }
 }
+
+Action.propTypes = {
+  img: PropTypes.string.isRequired,
+  headline: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  children: PropTypes.element
+};

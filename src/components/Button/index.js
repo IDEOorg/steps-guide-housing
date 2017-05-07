@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './index.less';
 
@@ -13,3 +14,10 @@ export default class Button extends Component {
     );
   }
 }
+
+Button.propTypes = {
+  textStyleClass: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string,
+  children: PropTypes.element
+};

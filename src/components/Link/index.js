@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './index.less';
 
@@ -11,3 +12,9 @@ export default class Link extends Component {
     );
   }
 }
+
+Link.propTypes = {
+  className: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired
+};

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './index.less';
 import Link from '../Link';
 
@@ -24,3 +25,11 @@ export default class Option extends Component {
     );
   }
 }
+
+Option.propTypes = {
+  selected: PropTypes.string,
+  onSelect: PropTypes.func.isRequired,
+  order: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  markTried: PropTypes.func.isRequired
+};

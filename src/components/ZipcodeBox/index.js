@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from '../Button';
 import TextInput from '../TextInput';
 import './index.less';
@@ -31,3 +32,9 @@ export default class ZipcodeBox extends Component {
     );
   }
 }
+
+ZipcodeBox.propTypes = {
+  urlStart: PropTypes.string.isRequired,
+  urlEnd: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired,
+};

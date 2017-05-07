@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './index.less';
 
@@ -6,7 +7,8 @@ export default class Card extends Component {
   render() {
     return (
       <div className="card_box">
-        <div className={classNames("card", this.props.selected ? "card_selected" : "card_unselected")} onClick={() => this.props.onSelect(this.props.id)}>
+        <div className={classNames("card", this.props.selected ? "card_selected" : "card_unselected")}
+          onClick={() => this.props.onSelect(this.props.id)}>
           <h2>{this.props.text}</h2>
         </div>
         <div>
@@ -17,3 +19,10 @@ export default class Card extends Component {
     );
   }
 }
+
+Card.propTypes = {
+  selected: PropTypes.bool.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};

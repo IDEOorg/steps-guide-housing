@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './index.less';
 import Header from '../../components/Header';
@@ -36,3 +37,7 @@ export default connect(
   mapStateToProps,
   {}
 )(App);
+
+App.propTypes = {
+  nav: PropTypes.string.isRequired
+};

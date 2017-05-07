@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './index.less';
 
 export default class CriteriaBox extends Component {
@@ -15,3 +16,8 @@ export default class CriteriaBox extends Component {
     );
   }
 }
+
+CriteriaBox.propTypes = {
+  criteria: PropTypes.arrayOf(PropTypes.string).isRequired,
+  children: PropTypes.element.isRequired
+};

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './index.less';
 
@@ -17,7 +18,17 @@ export default class TextInput extends Component {
   }
   render() {
     return (
-      <input className={classNames(this.props.className, "textinput")} type="text" value={this.state.value} onChange={this.handleChange} placeholder={this.props.placeholder} />
+      <input className={classNames(this.props.className, "textinput")}
+        type="text" value={this.state.value}
+        onChange={this.handleChange}
+        placeholder={this.props.placeholder} />
     );
   }
 }
+
+TextInput.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  className: PropTypes.string,
+  placeholder: PropTypes.string
+};

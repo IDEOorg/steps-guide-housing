@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Action from '../Action';
 import Button from '../Button';
 import ZipcodeBox from '../ZipcodeBox';
@@ -12,14 +13,21 @@ export default class ActionPlan extends Component {
     let actionItem;
     let actions = this.props.actions.map((action) => {
       if(action.link) {
-        actionItem = (<Button onClick={() => { window.open(action.link.url); }} textStyleClass="action_button_text" className="action_button">
+        actionItem = (
+          <Button
+            onClick={() => { window.open(action.link.url); }}
+            textStyleClass="action_button_text"
+            className="action_button">
           <img style={{marginBottom: '0.15625em', marginRight: '0.75em'}} src={urlImg} />
           {action.link.text}
         </Button>);
       }
       else if(action.criteria) {
         actionItem = (<CriteriaBox criteria={action.criteria.criteria}>
-          <Button onClick={() => { window.open(action.criteria.link.url); }} textStyleClass="action_button_text" className="action_button">
+          <Button
+            onClick={() => { window.open(action.criteria.link.url); }}
+            textStyleClass="action_button_text"
+            className="action_button">
             <img style={{marginBottom: '0.15625em', marginRight: '0.75em'}} src={urlImg} />
             {action.criteria.link.text}
           </Button>
@@ -31,7 +39,10 @@ export default class ActionPlan extends Component {
           urlEnd={action.zipcode.link.urlTemplateEnd}
           buttonText={action.zipcode.link.text}/>);
       }
-      return (<Action key={action.id} img={require('../../assets/' + action.img)} headline={action.headline} text={action.text}>
+      return (<Action key={action.id}
+          img={require('../../assets/' + action.img)}
+          headline={action.headline}
+          text={action.text}>
           {actionItem}
         </Action>);
     });
@@ -48,3 +59,15 @@ export default class ActionPlan extends Component {
     );
   }
 }
+
+ActionPlan.propTypes = {
+  actions: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    img: PropTypes.string,
+    headline: PropTypes.string,
+    text: PropTypes.string
+  })),
+  headline: PropTypes.string,
+  id: PropTypes.string,
+  isCurrentOption: PropTypes.bool
+};

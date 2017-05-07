@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './index.less';
 import Link from '../Link';
 
@@ -12,3 +13,7 @@ export default class OptionsIntro extends Component {
     );
   }
 }
+
+OptionsIntro.propTypes = {
+  goBack: PropTypes.func.isRequired,
+};
