@@ -1,8 +1,9 @@
-@import '../../responsive.less';
+@import '../../globals/constants.less';
+@import '../../globals/responsive.less';
 
 .option {
   padding: 7.5% 6%;
-  border-bottom: 1px solid rgb(227,227,227);
+  border-bottom: 1px solid @border-gray;
   text-align: center;
   cursor: pointer;
   opacity: 0.7;
@@ -18,18 +19,18 @@
     margin: 0 auto;
   }
   .option_headline {
-    color: rgb(84,149,249);
+    color: @base-blue;
     font-size: 1.25em;
     font-weight: 600;
     margin: 0.5em 0;
     letter-spacing: -0.025em;
   }
   .order_tag {
-    color: rgb(84,149,249);
+    color: @base-blue;
     height: 1.5625em;
     width: 1.5625em;
     border-radius: 0.78125em;
-    border: 2px solid rgb(84,149,249);
+    border: 2px solid @base-blue;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -40,10 +41,10 @@
     }
   }
   .option_tried_link {
-    color: rgba(70,70,70,0.3);
+    color: fade(@text-color, 30%);
     .desktop({
       &:hover {
-        color: rgba(70,70,70,0.7);
+        color: fade(@text-color, 70%);
       }
     });
   }

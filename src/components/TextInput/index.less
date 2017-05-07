@@ -1,23 +1,25 @@
+@import '../../globals/constants.less';
+
 input[type="text"].textinput {
   background: white;
   border-radius: 0.25em;
   border: 1px solid rgb(180,180,180);
-  font-family: 'Poppins';
+  font-family: @font-set;
   font-size: 0.75em;
   font-weight: 600;
   letter-spacing: 0.05em;
-  color: rgba(70,70,70,0.7);
+  color: fade(@text-color, 70%);
   padding-left: 0.8333333em;
 }
 
 input[type="text"]:focus {
     outline: none;
-    border: 1px solid rgba(70,70,70,0.7);
+    border: 1px solid fade(@text-color, 70%);
   }
 
 .placeholder() {
-  color: rgba(70,70,70,0.3);
-  font-family: 'Poppins';
+  color: fade(@text-color, 30%);
+  font-family: @font-set;
   font-size: 0.75em;
   font-weight: 600;
   letter-spacing: 0.05em;
