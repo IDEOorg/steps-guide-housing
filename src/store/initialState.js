@@ -6,7 +6,8 @@ const initialState = {
     return {
       id,
       text: cardsData[id].text,
-      selected: false
+      selected: false,
+      selectedChoice: cardsData[id].choices ? Object.keys(cardsData[id].choices)[0] : null
     };
   }),
   selectedOptions: {

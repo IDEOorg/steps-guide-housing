@@ -7,10 +7,12 @@ export default class Card extends Component {
   render() {
     let choicesBox = null;
     if(this.props.choices) {
-      let choices = this.props.choices.map((choice, i) => {
+      let choices = Object.keys(this.props.choices).map((choiceId) => {
         return (
-          <div key={i} className="card_choice">
-            <h6>{choice}</h6>
+          <div key={choiceId}
+            className={classNames("card_choice", choiceId === this.props.selectedChoice ? "card_choice_selected" : "card_choice_unselected")}
+            onClick={() => this.props.onChoiceSelect(this.props.id, choiceId)}>
+            <h6>{this.props.choices[choiceId].text}</h6>
           </div>
         );
       });
@@ -20,10 +22,21 @@ export default class Card extends Component {
         </div>
       );
     }
+    let cardBoxClass = null;
+    let cardClass = null;
+    if(this.props.selected) {
+      cardBoxClass = "card_selected";
+      if(this.props.choices) {
+        cardClass = "card_with_choices";
+      }
+    }
+    else {
+      cardBoxClass = "card_unselected";
+    }
+
     return (
-      <div className={classNames("card_box", this.props.selected ? "card_selected" : "card_unselected")}>
-        <div className={"card"}
-          style={this.props.choices ? {minHeight: '9.1em'} : null}
+      <div className={classNames("card_box", cardBoxClass)}>
+        <div className={classNames("card", cardClass)}
           onClick={() => this.props.onSelect(this.props.id)}>
           <h2>{this.props.text}</h2>
         </div>
@@ -38,5 +51,10 @@ Card.propTypes = {
   onSelect: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  choices: PropTypes.arrayOf(PropTypes.string)
+  onChoiceSelect: PropTypes.func,
+  selectedChoice: PropTypes.string,
+  choices: PropTypes.objectOf(PropTypes.objectOf(PropTypes.shape({
+    text: PropTypes.string,
+    options: PropTypes.arrayOf(PropTypes.string)
+  })))
 };

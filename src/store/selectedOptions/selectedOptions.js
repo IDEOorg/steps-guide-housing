@@ -5,10 +5,10 @@ export const SELECT_OPTION = 'SELECT_OPTION';
 export const MARK_TRIED = 'MARK_TRIED';
 export const TOGGLE_OPTION = 'TOGGLE_OPTION';
 
-export function generateOptions(ids) {
+export function generateOptions(cards) {
   return {
     type: GENERATE_OPTIONS,
-    cardIds: ids
+    cards
   };
 }
 
@@ -33,10 +33,21 @@ export function toggleOption(id) {
   };
 }
 
-function getDistinctOptionsFromCards(cardIds) {
+function getDistinctOptionsFromCards(cards) {
   let distinctOptionIds = [];
-  for(let i = 0; i < cardIds.length; i++) {
-    let optionIds = cardsData[cardIds[i]].options;
+  for(let i = 0; i < cards.length; i++) {
+    let cardId = cards[i].id;
+    let selectedChoice = cards[i].selectedChoice;
+    let optionIds = null;
+    console.log(cards);
+    console.log(selectedChoice);
+    if(selectedChoice) {
+      optionIds = cardsData[cardId].choices[selectedChoice].options;
+    }
+    else {
+      optionIds = cardsData[cardId].options;
+    }
+    console.log(optionIds);
     for(let j = 0; j < optionIds.length; j++) {
       let optionId = optionIds[j];
       if(!distinctOptionIds.includes(optionId)) {
@@ -46,32 +57,39 @@ function getDistinctOptionsFromCards(cardIds) {
   }
   return distinctOptionIds;
 }
-
+function cardsContainId(cards, id) {
+  for(let i = 0; i < cards.length; i++) {
+    if(cards[i].id === id) {
+      return true;
+    }
+  }
+  return false;
+}
 const selectedOptions = (state = {}, action) => {
   switch (action.type) {
     case GENERATE_OPTIONS: {
-      let cardIds = action.cardIds;
+      let cards = action.cards;
       let distinctOptionIds = [];
-      if(cardIds.includes("5") && cardIds.includes("6")) {
+      if(cardsContainId(cards, "5") && cardsContainId(cards, "6")) {
         distinctOptionIds = ["9"];
       }
-      else if(cardIds.includes("1") && cardIds.includes("6")) {
+      else if(cardsContainId(cards, "1") && cardsContainId(cards, "6")) {
         distinctOptionIds = ["6", "7", "8", "3", "4"];
       }
-      else if(cardIds.includes("1") && cardIds.includes("5")) {
+      else if(cardsContainId(cards, "1") && cardsContainId(cards, "5")) {
         distinctOptionIds = ["4"];
       }
-      else if(cardIds.includes("1")) {
+      else if(cardsContainId(cards, "1")) {
         distinctOptionIds = getDistinctOptionsFromCards(["1"]);
       }
-      else if(cardIds.includes("5")) {
+      else if(cardsContainId(cards, "5")) {
         distinctOptionIds = getDistinctOptionsFromCards(["5"]);
       }
-      else if(cardIds.includes("6")) {
+      else if(cardsContainId(cards, "6")) {
         distinctOptionIds = getDistinctOptionsFromCards(["6"]);
       }
       else {
-        distinctOptionIds = getDistinctOptionsFromCards(cardIds);
+        distinctOptionIds = getDistinctOptionsFromCards(cards);
         if(distinctOptionIds.length === 0) {
           distinctOptionIds = ["1", "2", "3", "4"];
         }

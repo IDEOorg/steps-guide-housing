@@ -5,7 +5,7 @@ import './index.less';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import cardsData from '../../data/cards';
-import { selectCard } from '../../store/cards/cards';
+import { selectCard, selectChoice } from '../../store/cards/cards';
 import { generateOptions } from '../../store/selectedOptions/selectedOptions';
 import { changeNav, OPTIONS_PAGE } from '../../store/nav/nav';
 
@@ -19,12 +19,19 @@ class CardsSection extends Component {
           text={card.text}
           selected={card.selected}
           onSelect={this.props.onSelect}
-          choices={cardsData[card.id].choices ? cardsData[card.id].choices : null}/>
+          onChoiceSelect={card.selected ? this.props.onChoiceSelect : null}
+          choices={cardsData[card.id].choices ? cardsData[card.id].choices : null}
+          selectedChoice={card.selectedChoice ? card.selectedChoice : null}/>
       );
     });
-    const cardIds = this.props.cards
+    const selectedCards = this.props.cards
     .filter((card) => card.selected)
-    .map((card) => card.id);
+    .map((card) => {
+      return {
+        id: card.id,
+        selectedChoice: card.selectedChoice ? card.selectedChoice : null
+      };
+    });
     return (
       <div className="cards_page">
         <div className="cards_section">
@@ -34,7 +41,7 @@ class CardsSection extends Component {
           <Button
             textStyleClass="show_options_button_text"
             className="show_options_button"
-            onClick={() => this.props.onSubmit(cardIds)}>
+            onClick={() => this.props.onSubmit(selectedCards)}>
             Show me my options
           </Button>
         </div>
@@ -52,9 +59,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onSelect: (id) => dispatch(selectCard(id)),
-    onSubmit: (ids) => {
+    onChoiceSelect: (cardId, choiceId) => dispatch(selectChoice(cardId, choiceId)),
+    onSubmit: (cards) => {
       dispatch(changeNav(OPTIONS_PAGE));
-      dispatch(generateOptions(ids));
+      dispatch(generateOptions(cards));
     }
   };
 }
@@ -66,6 +74,7 @@ export default connect(
 
 CardsSection.propTypes = {
   cards: PropTypes.arrayOf(PropTypes.instanceOf(Card)).isRequired,
+  onChoiceSelect: PropTypes.func,
   onSelect: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
 };

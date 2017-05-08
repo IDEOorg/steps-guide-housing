@@ -1,8 +1,11 @@
 @import '../../globals/constants.less';
 @import '../../globals/responsive.less';
 
+@card-height: 13em;
+@choices-height: 3.9em;
+
 .card_box {
-  height: 13em;
+  height: @card-height;
   background: white;
   border-radius: 0.25em;
   //overflow-y: hidden;
@@ -20,7 +23,7 @@
 .card {
   width: 100%;
   padding: 3% 6%;
-  min-height: 13em;
+  min-height: @card-height;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,9 +52,13 @@
   color: @base-blue;
 }
 
+.card_with_choices {
+  min-height: 9.1em;
+}
+
 .choices_box {
   width: 100%;
-  height: 3.9em;
+  height: @choices-height;
   cursor: pointer;
   display: flex;
   .card_choice {
@@ -67,11 +74,22 @@
     border-top: 2px solid fade(@base-blue, 20%);
     h6 {
       font-size: 0.625em;
-      color: @base-blue;
       text-align: center;
     }
     &:last-child{
         border-right: 0;
     }
+  }
+}
+
+.card_choice_unselected {
+  h6 {
+    color: fade(@base-blue, 70%);
+  }
+}
+
+.card_choice_selected {
+  h6 {
+    color: @base-blue;
   }
 }

@@ -19,5 +19,5 @@ Button.propTypes = {
   textStyleClass: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   className: PropTypes.string,
-  children: PropTypes.element
+  children: PropTypes.string
 };
