@@ -1,4 +1,5 @@
 @import '../../globals/constants.less';
+@import '../../globals/responsive.less';
 
 .button {
   cursor: pointer;
@@ -11,7 +12,9 @@
   .button_text {
     color: white;
   }
-  &:hover {
-    opacity: 0.85;
-  }
+  .desktop({
+    &:hover {
+      opacity: 0.85;
+    }
+  })
 }
