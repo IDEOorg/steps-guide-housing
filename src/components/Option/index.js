@@ -19,7 +19,7 @@ export default class Option extends Component {
             <p>{this.props.order}</p>
           </div>
           <h2 className="option_headline">{this.props.text}</h2>
-          <Link className="option_tried_link" onClick={this.props.markTried}>I've already tried this.</Link>
+          <Link className="option_tried_link" onClick={(e) => {this.props.markTried(); e.stopPropagation();}}>I've already tried this.</Link>
         </div>
       </div>
     );
@@ -27,9 +27,9 @@ export default class Option extends Component {
 }
 
 Option.propTypes = {
-  selected: PropTypes.string,
+  selected: PropTypes.bool,
   onSelect: PropTypes.func.isRequired,
-  order: PropTypes.string.isRequired,
+  order: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
   markTried: PropTypes.func.isRequired
 };

@@ -116,11 +116,34 @@ const selectedOptions = (state = {}, action) => {
           tried
         };
       });
+      let filteredOptions = state.options.filter((option) => {
+        return !option.tried;
+      });
       let currentOption = null;
-      for(let i = 0; i < state.options.length; i++) {
-        if(action.id === state.options[i].id) {
-          if(i < state.options.length - 1) {
-            currentOption = state.options[i + 1].id;
+      if(action.id !== state.currentOption) {
+        currentOption = state.currentOption;
+        console.log('1');
+      }
+      else if(filteredOptions.length < 2) {
+        currentOption = null;
+        console.log('2');
+      }
+      else {
+        console.log('4');
+        console.log(filteredOptions);
+        console.log('action ' + action.id);
+        for(let i = 0; i < filteredOptions.length; i++) {
+          console.log('3');
+          if(action.id === filteredOptions[i].id) {
+            if(i < filteredOptions.length - 1) {
+              console.log(i);
+              console.log(filteredOptions);
+              console.log('5');
+              currentOption = filteredOptions[i + 1].id;
+            }
+            else {
+              currentOption = filteredOptions[i - 1].id;
+            }
           }
         }
       }

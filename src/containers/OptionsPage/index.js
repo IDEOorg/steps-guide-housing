@@ -74,7 +74,7 @@ class OptionsPage extends Component {
       return (<Option key={id}
         selected={id === currentOption}
         order={i + 1} text={optionsData[id]["text"]}
-        markTried={() => {}}
+        markTried={() => {this.props.markTried(id);}}
         onSelect={() => {this.scrollOnOptionSelect(id); this.props.onSelect(id);}}/>);
     }
     );
@@ -96,7 +96,7 @@ class OptionsPage extends Component {
             <Option key={id}
               selected={id === currentOption}
               order={i + 1} text={optionsData[id]["text"]}
-              markTried={() => {}}
+              markTried={() => {this.props.markTried(id);}}
               onSelect={() => {
                 this.props.onSelect(id);
                 this.scrollOnOptionSelectMobile(id);
@@ -172,4 +172,5 @@ OptionsPage.propTypes = {
   toggleOption: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
   goBack: PropTypes.func.isRequired,
+  markTried: PropTypes.func,
 };
