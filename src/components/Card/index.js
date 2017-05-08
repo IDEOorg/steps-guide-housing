@@ -23,7 +23,7 @@ export default class Card extends Component {
     return (
       <div className={classNames("card_box", this.props.selected ? "card_selected" : "card_unselected")}>
         <div className={"card"}
-          style={{minHeight: '9.1em'}}
+          style={this.props.choices ? {minHeight: '9.1em'} : null}
           onClick={() => this.props.onSelect(this.props.id)}>
           <h2>{this.props.text}</h2>
         </div>
