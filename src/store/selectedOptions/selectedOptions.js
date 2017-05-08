@@ -39,20 +39,12 @@ function getDistinctOptionsFromCards(cards) {
     let cardId = cards[i].id;
     let selectedChoice = cards[i].selectedChoice;
     let optionIds = null;
-    console.log('...........');
-    console.log(cards);
-    console.log(selectedChoice);
     if(selectedChoice) {
       optionIds = cardsData[cardId].choices[selectedChoice].options;
     }
     else {
-      console.log(cardsData);
-      console.log(cardId);
-      console.log('ehh');
       optionIds = cardsData[cardId].options;
-      console.log('hmm');
     }
-    console.log(optionIds);
     for(let j = 0; j < optionIds.length; j++) {
       let optionId = optionIds[j];
       if(!distinctOptionIds.includes(optionId)) {

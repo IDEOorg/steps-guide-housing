@@ -19,7 +19,6 @@ export function selectChoice(cardId, choiceId) {
 const cards = (state = [], action) => {
   switch (action.type) {
     case SELECT_CARD:
-      console.log(state);
       return state.map((c) => {
         if (c.id !== action.id) {
           return c;
@@ -30,7 +29,6 @@ const cards = (state = [], action) => {
         });
       });
     case SELECT_CHOICE:
-      console.log(state);
       return state.map((c) => {
         if (c.id !== action.cardId) {
           return c;

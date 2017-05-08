@@ -17,6 +17,9 @@ class OptionsPage extends Component {
   componentWillMount() {
     window.scrollTo(0,0);
   }
+  componentDidUpdate() {
+    this.scrollOnOptionSelectMobile(this.props.currentOption);
+  }
   onScroll() {
     let actionPlans = this.actionSection.children;
     let height = Math.max(document.documentElement.clientHeight, window.innerHeight);
@@ -41,6 +44,15 @@ class OptionsPage extends Component {
           this.actionSection.scrollTop += actionPlans[i].getBoundingClientRect().top - 20 - 50;
           return;
         }
+      }
+    }
+  }
+  scrollOnOptionSelectMobile(id) {
+    let options = document.getElementsByClassName('option_box_mobile');
+    for(let i = 0; i < options.length; i++) {
+      if(options[i].dataset.option === id) {
+        window.scrollBy(0, options[i].getBoundingClientRect().top - 50); // 50 is header height
+        break;
       }
     }
   }
@@ -80,12 +92,15 @@ class OptionsPage extends Component {
       let id = optionAndAction.optionId;
       return (
         <div key={id}>
-          <div className="option_box_mobile">
+          <div data-option={id} className="option_box_mobile">
             <Option key={id}
               selected={id === currentOption}
               order={i + 1} text={optionsData[id]["text"]}
               markTried={() => {}}
-              onSelect={() => {this.props.onSelect(id);}}/>
+              onSelect={() => {
+                this.props.onSelect(id);
+                this.scrollOnOptionSelectMobile(id);
+              }}/>
           </div>
           <div className="action_plan_mobile">
             <ActionPlan
