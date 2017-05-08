@@ -4,20 +4,24 @@ import { connect } from 'react-redux';
 import './index.less';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
+import cardsData from '../../data/cards';
 import { selectCard } from '../../store/cards/cards';
 import { generateOptions } from '../../store/selectedOptions/selectedOptions';
 import { changeNav, OPTIONS_PAGE } from '../../store/nav/nav';
 
 class CardsSection extends Component {
   render() {
-    const cards = this.props.cards.map((card) =>
-      <Card
-        key={card.id}
-        id={card.id}
-        text={card.text}
-        selected={card.selected}
-        onSelect={this.props.onSelect}/>
-    );
+    const cards = this.props.cards.map((card) => {
+      return (
+        <Card
+          key={card.id}
+          id={card.id}
+          text={card.text}
+          selected={card.selected}
+          onSelect={this.props.onSelect}
+          choices={cardsData[card.id].choices ? cardsData[card.id].choices : null}/>
+      );
+    });
     const cardIds = this.props.cards
     .filter((card) => card.selected)
     .map((card) => card.id);

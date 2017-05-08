@@ -4,7 +4,8 @@
     "options": ["7", "3", "8", "4"]
   },
   "2": {
-    "text": "I've missed rent payments in the past",
+    "text": "I've missed paying rent in the past",
+    "choices": ["JUST ONCE", "TWICE OR MORE"],
     "options": ["1", "2", "3", "4"]
   },
   "3": {
