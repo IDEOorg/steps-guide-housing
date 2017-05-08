@@ -39,13 +39,18 @@ function getDistinctOptionsFromCards(cards) {
     let cardId = cards[i].id;
     let selectedChoice = cards[i].selectedChoice;
     let optionIds = null;
+    console.log('...........');
     console.log(cards);
     console.log(selectedChoice);
     if(selectedChoice) {
       optionIds = cardsData[cardId].choices[selectedChoice].options;
     }
     else {
+      console.log(cardsData);
+      console.log(cardId);
+      console.log('ehh');
       optionIds = cardsData[cardId].options;
+      console.log('hmm');
     }
     console.log(optionIds);
     for(let j = 0; j < optionIds.length; j++) {
@@ -57,36 +62,36 @@ function getDistinctOptionsFromCards(cards) {
   }
   return distinctOptionIds;
 }
-function cardsContainId(cards, id) {
+function getCardFromCards(cards, id) {
   for(let i = 0; i < cards.length; i++) {
     if(cards[i].id === id) {
-      return true;
+      return cards[i];
     }
   }
-  return false;
+  return null;
 }
 const selectedOptions = (state = {}, action) => {
   switch (action.type) {
     case GENERATE_OPTIONS: {
       let cards = action.cards;
       let distinctOptionIds = [];
-      if(cardsContainId(cards, "5") && cardsContainId(cards, "6")) {
+      if(getCardFromCards(cards, "5") && getCardFromCards(cards, "6")) {
         distinctOptionIds = ["9"];
       }
-      else if(cardsContainId(cards, "1") && cardsContainId(cards, "6")) {
+      else if(getCardFromCards(cards, "1") && getCardFromCards(cards, "6")) {
         distinctOptionIds = ["6", "7", "8", "3", "4"];
       }
-      else if(cardsContainId(cards, "1") && cardsContainId(cards, "5")) {
+      else if(getCardFromCards(cards, "1") && getCardFromCards(cards, "5")) {
         distinctOptionIds = ["4"];
       }
-      else if(cardsContainId(cards, "1")) {
-        distinctOptionIds = getDistinctOptionsFromCards(["1"]);
+      else if(getCardFromCards(cards, "1")) {
+        distinctOptionIds = getDistinctOptionsFromCards([getCardFromCards(cards, "1")]);
       }
-      else if(cardsContainId(cards, "5")) {
-        distinctOptionIds = getDistinctOptionsFromCards(["5"]);
+      else if(getCardFromCards(cards, "5")) {
+        distinctOptionIds = getDistinctOptionsFromCards([getCardFromCards(cards, "5")]);
       }
-      else if(cardsContainId(cards, "6")) {
-        distinctOptionIds = getDistinctOptionsFromCards(["6"]);
+      else if(getCardFromCards(cards, "6")) {
+        distinctOptionIds = getDistinctOptionsFromCards([getCardFromCards(cards, "6")]);
       }
       else {
         distinctOptionIds = getDistinctOptionsFromCards(cards);
