@@ -7,6 +7,7 @@ import { selectOption, markTried, toggleOption } from '../../store/selectedOptio
 import Option from '../../components/Option';
 import OptionsIntro from '../../components/OptionsIntro';
 import ActionPlan from '../../components/ActionPlan';
+import TriedOptions from '../TriedOptions';
 import optionsData from '../../data/options';
 import { changeNav, MAIN_PAGE } from '../../store/nav/nav';
 
@@ -58,26 +59,44 @@ class OptionsPage extends Component {
   }
   render() {
     const currentOption = this.props.currentOption;
-    const optionsWithActions = this.props.options.filter((option) => !option.tried).map((option) => {
-      let id = option.id;
-      let optionId = id;
-      let actions = optionsData[id]["actions"];
-      return {
-        optionId,
-        actions
-      };
-    });
+    const filteredOptions = this.props.options.filter((option) => !option.tried);
+
+    let optionsWithActions = null;
+    if(filteredOptions.length) {
+      optionsWithActions = filteredOptions.map((option) => {
+        let id = option.id;
+        let optionId = id;
+        let actions = optionsData[id]["actions"];
+        return {
+          optionId,
+          actions
+        };
+      });
+    }
+    else {
+      const triedEverythingId = "10";
+      optionsWithActions = [
+        {
+          optionId: triedEverythingId,
+          actions: optionsData[triedEverythingId]["actions"]
+        }
+      ];
+    }
 
     // desktop
-    const options = optionsWithActions.map((optionAndAction, i) => {
-      let id = optionAndAction.optionId;
-      return (<Option key={id}
-        selected={id === currentOption}
-        order={i + 1} text={optionsData[id]["text"]}
-        markTried={() => {this.props.markTried(id);}}
-        onSelect={() => {this.scrollOnOptionSelect(id); this.props.onSelect(id);}}/>);
+    let options = null;
+    if(filteredOptions.length) {
+      options = optionsWithActions.map((optionAndAction, i) => {
+        let id = optionAndAction.optionId;
+        return (<Option key={id}
+          selected={id === currentOption}
+          order={i + 1} text={optionsData[id]["text"]}
+          onLinkClick={() => {this.props.markTried(id);}}
+          linkText={"I've already tried this."}
+          onSelect={() => {this.scrollOnOptionSelect(id); this.props.onSelect(id);}}/>);
+      });
     }
-    );
+
     const actionPlans = optionsWithActions.map((optionAndAction) => {
       return (
         <ActionPlan
@@ -90,18 +109,23 @@ class OptionsPage extends Component {
     // mobile
     const optionsActionsOutputMobile = optionsWithActions.map((optionAndAction, i) => {
       let id = optionAndAction.optionId;
+      let optionBox = null;
+      if(filteredOptions.length) {
+        optionBox = (<div data-option={id} className="option_box_mobile">
+          <Option key={id}
+            selected={id === currentOption}
+            order={i + 1} text={optionsData[id]["text"]}
+            onLinkClick={() => {this.props.markTried(id);}}
+            linkText={"I've already tried this."}
+            onSelect={() => {
+              this.props.onSelect(id);
+              this.scrollOnOptionSelectMobile(id);
+            }}/>
+        </div>);
+      }
       return (
         <div key={id}>
-          <div data-option={id} className="option_box_mobile">
-            <Option key={id}
-              selected={id === currentOption}
-              order={i + 1} text={optionsData[id]["text"]}
-              markTried={() => {this.props.markTried(id);}}
-              onSelect={() => {
-                this.props.onSelect(id);
-                this.scrollOnOptionSelectMobile(id);
-              }}/>
-          </div>
+          {optionBox}
           <div className="action_plan_mobile">
             <ActionPlan
               key={optionAndAction.optionId}
@@ -121,6 +145,7 @@ class OptionsPage extends Component {
             <div className="options_section">
               <OptionsIntro goBack={this.props.goBack} />
               {options}
+              <TriedOptions />
             </div>
             <div
               className="actions_section"
@@ -134,6 +159,7 @@ class OptionsPage extends Component {
           <div className="options_page">
             <OptionsIntro goBack={this.props.goBack} />
             { optionsActionsOutputMobile }
+            <TriedOptions />
           </div>
         </MediaQuery>
       </div>
@@ -170,7 +196,7 @@ OptionsPage.propTypes = {
     })
   ),
   toggleOption: PropTypes.func.isRequired,
-  onSelect: PropTypes.func.isRequired,
+  onSelect: PropTypes.func,
   goBack: PropTypes.func.isRequired,
   markTried: PropTypes.func,
 };

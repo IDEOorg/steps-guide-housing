@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import './index.less';
 import Link from '../Link';
 
 export default class Option extends Component {
   render() {
-    let optionStyles;
-    if(this.props.selected) {
-      optionStyles = {
-        background: '#f4f7ff',
-        opacity: 1
-      };
+    let orderBox = null;
+    if(this.props.order !== undefined) {
+      orderBox = (
+        <div className="order_tag">
+          <p>{this.props.order}</p>
+        </div>
+      );
+    }
+    let link = null;
+    if(this.props.linkText) {
+      link = (
+        <Link className="option_tried_link" onClick={(e) => {this.props.onLinkClick(); e.stopPropagation();}}>{this.props.linkText}</Link>
+      );
     }
     return (
-      <div className="option" style={optionStyles} onClick={this.props.onSelect}>
+      <div className={classNames("option", this.props.selected ? "selected_option" : null)} style={this.props.styles} onClick={this.props.onSelect}>
         <div className="option_container">
-          <div className="order_tag">
-            <p>{this.props.order}</p>
-          </div>
-          <h2 className="option_headline">{this.props.text}</h2>
-          <Link className="option_tried_link" onClick={(e) => {this.props.markTried(); e.stopPropagation();}}>I've already tried this.</Link>
+          {orderBox}
+          <h2 className="option_headline"
+            style={this.props.textStyles}>
+            {this.props.text}
+          </h2>
+          {link}
         </div>
       </div>
     );
@@ -29,7 +38,10 @@ export default class Option extends Component {
 Option.propTypes = {
   selected: PropTypes.bool,
   onSelect: PropTypes.func.isRequired,
-  order: PropTypes.number.isRequired,
+  order: PropTypes.number,
   text: PropTypes.string.isRequired,
-  markTried: PropTypes.func.isRequired
+  linkText: PropTypes.string,
+  textStyles: PropTypes.object,
+  styles: PropTypes.object,
+  onLinkClick: PropTypes.func.isRequired,
 };

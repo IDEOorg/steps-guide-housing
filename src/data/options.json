@@ -220,5 +220,20 @@
         }
       }
     ]
+  },
+  "10": {
+    "text": "Already tried everything?",
+    "actions": [
+      {
+        "id": "1",
+        "img": "advice-icon-1.svg",
+        "headline": "Try talking to a counselor again",
+        "text": "If you won't be able to pay your rent for a while, the best thing you can do right now is get personalized advice from a counselor.",
+        "link": {
+          "text": "FIND A HOUSING COUNSELOR NEAR YOU",
+          "url": "https://www.consumerfinance.gov/find-a-housing-counselor/"
+        }
+      }
+    ]
   }
 }

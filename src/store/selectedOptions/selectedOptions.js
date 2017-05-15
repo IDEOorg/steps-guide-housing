@@ -3,6 +3,7 @@ import cardsData from '../../data/cards';
 export const GENERATE_OPTIONS = 'GENERATE_OPTIONS';
 export const SELECT_OPTION = 'SELECT_OPTION';
 export const MARK_TRIED = 'MARK_TRIED';
+export const ADD_TRIED_BACK = 'ADD_TRIED_BACK';
 export const TOGGLE_OPTION = 'TOGGLE_OPTION';
 
 export function generateOptions(cards) {
@@ -22,6 +23,12 @@ export function selectOption(id) {
 export function markTried(id) {
   return {
     type: MARK_TRIED,
+    id
+  };
+}
+export function addTriedBack(id) {
+  return {
+    type: ADD_TRIED_BACK,
     id
   };
 }
@@ -122,23 +129,14 @@ const selectedOptions = (state = {}, action) => {
       let currentOption = null;
       if(action.id !== state.currentOption) {
         currentOption = state.currentOption;
-        console.log('1');
       }
       else if(filteredOptions.length < 2) {
         currentOption = null;
-        console.log('2');
       }
       else {
-        console.log('4');
-        console.log(filteredOptions);
-        console.log('action ' + action.id);
         for(let i = 0; i < filteredOptions.length; i++) {
-          console.log('3');
           if(action.id === filteredOptions[i].id) {
             if(i < filteredOptions.length - 1) {
-              console.log(i);
-              console.log(filteredOptions);
-              console.log('5');
               currentOption = filteredOptions[i + 1].id;
             }
             else {
@@ -151,6 +149,29 @@ const selectedOptions = (state = {}, action) => {
         currentOption,
         options
       };
+    }
+    case ADD_TRIED_BACK: {
+      let untriedOptions = state.options.filter((option) => !option.tried);
+      let options = state.options.map((option) => {
+        let tried = option.id === action.id ? false : option.tried;
+        return {
+          id: option.id,
+          tried
+        };
+      });
+      if(untriedOptions.length === 0) {
+        return {
+          currentOption: action.id,
+          options
+        };
+      }
+      else {
+        return {
+          ...state,
+          options
+        };
+      }
+
     }
     case TOGGLE_OPTION: {
       return {
