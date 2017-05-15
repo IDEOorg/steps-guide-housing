@@ -31,6 +31,6 @@ describe('selectedOptions reducer', () => {
       }).options[1].tried
     ).toEqual(
       false
-    )
-  })
+    );
+  });
 });
