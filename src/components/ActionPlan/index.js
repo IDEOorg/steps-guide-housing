@@ -18,7 +18,7 @@ export default class ActionPlan extends Component {
             onClick={() => { window.open(action.link.url); }}
             textStyleClass="action_button_text"
             className="action_button">
-          <img style={{marginBottom: '0.15625em', marginRight: '0.75em'}} src={urlImg} />
+          <img className="action_img" src={urlImg} />
           {action.link.text}
         </Button>);
       }
@@ -28,7 +28,7 @@ export default class ActionPlan extends Component {
             onClick={() => { window.open(action.criteria.link.url); }}
             textStyleClass="action_button_text"
             className="action_button">
-            <img style={{marginBottom: '0.15625em', marginRight: '0.75em'}} src={urlImg} />
+            <img className="action_img" src={urlImg} />
             {action.criteria.link.text}
           </Button>
         </CriteriaBox>);
