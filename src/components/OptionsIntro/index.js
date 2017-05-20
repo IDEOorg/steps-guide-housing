@@ -17,3 +17,5 @@ export default class OptionsIntro extends Component {
 OptionsIntro.propTypes = {
   goBack: PropTypes.func.isRequired,
 };
+
+OptionsIntro.displayName = 'OptionsIntro';

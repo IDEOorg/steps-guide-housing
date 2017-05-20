@@ -200,3 +200,5 @@ OptionsPage.propTypes = {
   goBack: PropTypes.func.isRequired,
   markTried: PropTypes.func,
 };
+
+OptionsPage.displayName = 'Options Page';

@@ -38,3 +38,5 @@ ZipcodeBox.propTypes = {
   urlEnd: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
 };
+
+ZipcodeBox.displayName = 'ZipcodeBox';

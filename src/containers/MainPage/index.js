@@ -4,6 +4,7 @@ import CardsSection from '../CardsSection';
 const introImg = require('../../assets/city-scene.svg');
 
 export default class MainPage extends Component {
+
   render() {
     return (
       <div className="main_page">
@@ -19,3 +20,5 @@ export default class MainPage extends Component {
     );
   }
 }
+
+MainPage.displayName = 'Main Page';

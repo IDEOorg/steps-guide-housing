@@ -10,3 +10,5 @@ export default class Header extends Component {
     );
   }
 }
+
+Header.displayName = 'Header';

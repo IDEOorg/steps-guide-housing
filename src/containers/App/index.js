@@ -41,3 +41,5 @@ export default connect(
 App.propTypes = {
   nav: PropTypes.string.isRequired
 };
+
+App.displayName = 'App';

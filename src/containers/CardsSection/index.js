@@ -78,3 +78,5 @@ CardsSection.propTypes = {
   onSelect: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
 };
+
+CardsSection.displayName = 'Cards Section';

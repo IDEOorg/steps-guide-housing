@@ -21,3 +21,5 @@ Button.propTypes = {
   className: PropTypes.string,
   children: PropTypes.string
 };
+
+Button.displayName = 'Button';

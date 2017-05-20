@@ -73,3 +73,5 @@ TriedOptions.propTypes = {
   triedOptions: PropTypes.object,
   addTriedBack: PropTypes.func.isRequired
 };
+
+TriedOptions.displayName = 'TriedOptions';

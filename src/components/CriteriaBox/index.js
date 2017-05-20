@@ -21,3 +21,5 @@ CriteriaBox.propTypes = {
   criteria: PropTypes.arrayOf(PropTypes.string).isRequired,
   children: PropTypes.element.isRequired
 };
+
+CriteriaBox.displayName = 'CriteriaBox';

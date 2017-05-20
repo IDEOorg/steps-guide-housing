@@ -58,3 +58,5 @@ Card.propTypes = {
     options: PropTypes.arrayOf(PropTypes.string)
   })))
 };
+
+Card.displayName = 'Card';

@@ -31,3 +31,5 @@ Action.propTypes = {
   text: PropTypes.string.isRequired,
   children: PropTypes.element
 };
+
+Action.displayName = 'Action';

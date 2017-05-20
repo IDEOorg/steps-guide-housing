@@ -45,3 +45,5 @@ Option.propTypes = {
   styles: PropTypes.object,
   onLinkClick: PropTypes.func.isRequired,
 };
+
+Option.displayName = 'Option';

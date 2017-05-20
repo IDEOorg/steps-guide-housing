@@ -18,3 +18,5 @@ Link.propTypes = {
   onClick: PropTypes.func.isRequired,
   children: PropTypes.string.isRequired
 };
+
+Link.displayName = 'Link';

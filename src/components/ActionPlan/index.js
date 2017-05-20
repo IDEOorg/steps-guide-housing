@@ -71,3 +71,5 @@ ActionPlan.propTypes = {
   id: PropTypes.string,
   isCurrentOption: PropTypes.bool
 };
+
+ActionPlan.displayName = 'ActionPlan';
