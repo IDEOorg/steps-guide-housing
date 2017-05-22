@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './index.less';
@@ -9,46 +9,44 @@ import { selectCard, selectChoice } from '../../store/cards/cards';
 import { generateOptions } from '../../store/selectedOptions/selectedOptions';
 import { changeNav, OPTIONS_PAGE } from '../../store/nav/nav';
 
-class CardsSection extends Component {
-  render() {
-    const cards = this.props.cards.map((card) => {
-      return (
-        <Card
-          key={card.id}
-          id={card.id}
-          text={card.text}
-          selected={card.selected}
-          onSelect={this.props.onSelect}
-          onChoiceSelect={card.selected ? this.props.onChoiceSelect : null}
-          choices={cardsData[card.id].choices ? cardsData[card.id].choices : null}
-          selectedChoice={card.selectedChoice ? card.selectedChoice : null}/>
-      );
-    });
-    const selectedCards = this.props.cards
-    .filter((card) => card.selected)
-    .map((card) => {
-      return {
-        id: card.id,
-        selectedChoice: card.selectedChoice ? card.selectedChoice : null
-      };
-    });
+const CardsSection = (props) => {
+  const cards = props.cards.map((card) => {
     return (
-      <div className="cards_page">
-        <div className="cards_section">
-          {cards}
-        </div>
-        <div className="submit_section">
-          <Button
-            textStyleClass="show_options_button_text"
-            className="show_options_button"
-            onClick={() => this.props.onSubmit(selectedCards)}>
-            Show me my options
-          </Button>
-        </div>
-      </div>
+      <Card
+        key={card.id}
+        id={card.id}
+        text={card.text}
+        selected={card.selected}
+        onSelect={props.onSelect}
+        onChoiceSelect={card.selected ? props.onChoiceSelect : null}
+        choices={cardsData[card.id].choices ? cardsData[card.id].choices : null}
+        selectedChoice={card.selectedChoice ? card.selectedChoice : null}/>
     );
-  }
-}
+  });
+  const selectedCards = props.cards
+  .filter((card) => card.selected)
+  .map((card) => {
+    return {
+      id: card.id,
+      selectedChoice: card.selectedChoice ? card.selectedChoice : null
+    };
+  });
+  return (
+    <div className="cards_page">
+      <div className="cards_section">
+        {cards}
+      </div>
+      <div className="submit_section">
+        <Button
+          textStyleClass="show_options_button_text"
+          className="show_options_button"
+          onClick={() => props.onSubmit(selectedCards)}>
+          Show me my options
+        </Button>
+      </div>
+    </div>
+  );
+};
 
 function mapStateToProps(state) {
   return {
@@ -79,4 +77,4 @@ CardsSection.propTypes = {
   onSubmit: PropTypes.func.isRequired
 };
 
-CardsSection.displayName = 'Cards Section';
+CardsSection.displayName = 'CardsSection';
