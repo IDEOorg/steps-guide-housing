@@ -3,11 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import initialState from './store/initialState';
 import configureStore from './store/configureStore';
-import { Router, Route, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import App from './containers/App';
-import MainPage from './containers/MainPage';
-import OptionsPage from './containers/OptionsPage';
+import Routes from './routes';
 import '../vendors/sanitize.min.css';
 import './index.less';
 
@@ -16,12 +14,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
-      <Route component={App}>
-        <Route path="/" component={MainPage} />
-        <Route path="/options" component={OptionsPage} />
-      </Route>
-    </Router>
+    <Routes history={history} />
   </Provider>,
   document.getElementById('app')
 );
