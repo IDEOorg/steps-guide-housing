@@ -9,7 +9,12 @@ const Card = (props) => {
     let choices = Object.keys(props.choices).map((choiceId) => {
       return (
         <div key={choiceId}
-          className={classNames("card_choice", choiceId === props.selectedChoice ? "card_choice_selected" : "card_choice_unselected")}
+          className={
+            classNames({
+              card_choice: true,
+              card_choice_selected: choiceId === props.selectedChoice,
+              card_choice_unselected: choiceId !== props.selectedChoice
+            })}
           onClick={() => props.onChoiceSelect(props.id, choiceId)}>
           <h6>{props.choices[choiceId].text}</h6>
         </div>

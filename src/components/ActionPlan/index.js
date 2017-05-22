@@ -46,7 +46,13 @@ const ActionPlan = (props) => {
       </Action>);
   });
   return (
-    <div className={classNames("action_plan", props.isCurrentOption ? "" : "inactive_action")}
+    <div className={
+        classNames(
+          {
+            action_plan: true,
+            inactive_action: !props.isCurrentOption
+          }
+        )}
       data-option={props.id}>
       <div className="actions_headline_section">
         <h1 className="actions_option_headline">

@@ -20,7 +20,13 @@ const Option = (props) => {
     );
   }
   return (
-    <div className={classNames("option", props.selected ? "selected_option" : null)} style={props.styles} onClick={props.onSelect}>
+    <div className={
+        classNames({
+          option: true,
+          selected_option: props.selected
+        })} 
+        style={props.styles}
+        onClick={props.onSelect}>
       <div className="option_container">
         {orderBox}
         <h2 className="option_headline"
