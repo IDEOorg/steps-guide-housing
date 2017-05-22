@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import './index.less';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import cardsData from '../../data/cards';
 import { selectCard, selectChoice } from '../../store/cards/cards';
 import { generateOptions } from '../../store/selectedOptions/selectedOptions';
-import { changeNav, OPTIONS_PAGE } from '../../store/nav/nav';
 
 const CardsSection = (props) => {
   const cards = props.cards.map((card) => {
@@ -48,7 +48,9 @@ const CardsSection = (props) => {
   );
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+  console.log(state);
+  console.log(ownProps);
   return {
     cards: state.cards
   };
@@ -59,7 +61,8 @@ function mapDispatchToProps(dispatch) {
     onSelect: (id) => dispatch(selectCard(id)),
     onChoiceSelect: (cardId, choiceId) => dispatch(selectChoice(cardId, choiceId)),
     onSubmit: (cards) => {
-      dispatch(changeNav(OPTIONS_PAGE));
+      console.log('ok');
+      dispatch(push('/options'));
       dispatch(generateOptions(cards));
     }
   };
