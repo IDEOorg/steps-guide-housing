@@ -4,9 +4,9 @@ import Action from '../Action';
 import Button from '../Button';
 import ZipcodeBox from '../ZipcodeBox';
 import CriteriaBox from '../CriteriaBox';
+import UrlImage from '../UrlImage';
 import classNames from 'classnames';
 import './index.less';
-const urlAssetImg = require('../../assets/url-icon.svg');
 
 const ActionPlan = (props) => {
   let actionItem;
@@ -17,7 +17,7 @@ const ActionPlan = (props) => {
           onClick={() => { window.open(action.link.url); }}
           textStyleClass="action_button_text"
           className="action_button">
-        <img className="action_img" src={urlAssetImg} />
+        <UrlImage />
         {action.link.text}
       </Button>);
     }
@@ -27,7 +27,7 @@ const ActionPlan = (props) => {
           onClick={() => { window.open(action.criteria.link.url); }}
           textStyleClass="action_button_text"
           className="action_button">
-          <img className="action_img" src={urlAssetImg} />
+          <UrlImage />
           {action.criteria.link.text}
         </Button>
       </CriteriaBox>);
