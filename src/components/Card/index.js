@@ -41,7 +41,10 @@ const Card = (props) => {
   return (
     <div className={classNames("card_box", cardBoxClass)}>
       <div className={classNames("card", cardClass)}
-        onClick={() => props.onSelect(props.id)}>
+        style={{position: 'relative'}}
+        onClick={() => props.onSelect(props.id)}
+      >
+        <img className={"card_add_icon"} src={require('../../assets/card-add-icon.svg')} />
         <h2>{props.text}</h2>
       </div>
       {choicesBox}
