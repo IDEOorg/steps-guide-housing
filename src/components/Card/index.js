@@ -45,6 +45,8 @@ const Card = (props) => {
         style={{position: 'relative'}}
         onClick={(e) => {
           props.onSelect();
+          alert(props.selected);
+          alert(props.id);
           e.preventDefault();
           e.stopPropagation();
         }}
