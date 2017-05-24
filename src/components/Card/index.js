@@ -45,10 +45,6 @@ const Card = (props) => {
         style={{position: 'relative'}}
         onClick={(e) => {
           props.onSelect();
-          alert(props.selected);
-          alert(props.id);
-          e.preventDefault();
-          e.stopPropagation();
         }}
       >
         <img className={"card_add_icon"} src={require('../../assets/card-add-icon.svg')} />

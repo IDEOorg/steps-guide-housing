@@ -19,8 +19,6 @@ export function selectChoice(cardId, choiceId) {
 const cards = (state = [], action) => {
   switch (action.type) {
     case SELECT_CARD:
-      alert('reducer');
-      alert(action.id);
       return state.map((c) => {
         if (c.id !== action.id) {
           return c;
