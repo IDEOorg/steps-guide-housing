@@ -43,7 +43,11 @@ const Card = (props) => {
     <div className={classNames("card_box", cardBoxClass)}>
       <div className={classNames("card", cardClass)}
         style={{position: 'relative'}}
-        onClick={props.onSelect}
+        onClick={(e) => {
+          props.onSelect();
+          e.preventDefault();
+          e.stopPropagation();
+        }}
       >
         <img className={"card_add_icon"} src={require('../../assets/card-add-icon.svg')} />
         <h2>{props.text}</h2>
