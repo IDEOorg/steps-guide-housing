@@ -17,7 +17,9 @@ const CardsSection = (props) => {
         id={card.id}
         text={card.text}
         selected={card.selected}
-        onSelect={props.onSelect}
+        onSelect={() => {
+          props.onSelect(card.id);
+        }}
         onChoiceSelect={card.selected ? props.onChoiceSelect : null}
         choices={cardsData[card.id].choices ? cardsData[card.id].choices : null}
         selectedChoice={card.selectedChoice ? card.selectedChoice : null}/>
