@@ -72,6 +72,7 @@ function getCardFromCards(cards, id) {
 const selectedOptions = (state = {}, action) => {
   switch (action.type) {
     case GENERATE_OPTIONS: {
+      alert('ok');
       let cards = action.cards;
       alert(cards[0] ? cards[0].id : 'nothing');
       let distinctOptionIds = [];
