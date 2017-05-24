@@ -59,6 +59,7 @@ class OptionsPage extends Component {
   }
   render() {
     const currentOption = this.props.currentOption;
+    alert(currentOption);
     const filteredOptions = this.props.options.filter((option) => !option.tried);
 
     let optionsWithActions = null;

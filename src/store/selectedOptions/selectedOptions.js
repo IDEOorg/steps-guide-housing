@@ -73,6 +73,7 @@ const selectedOptions = (state = {}, action) => {
   switch (action.type) {
     case GENERATE_OPTIONS: {
       let cards = action.cards;
+      alert(cards[0] ? cards[0].id : 'nothing');
       let distinctOptionIds = [];
       if(getCardFromCards(cards, "5") && getCardFromCards(cards, "6")) {
         distinctOptionIds = ["9"];
@@ -98,6 +99,8 @@ const selectedOptions = (state = {}, action) => {
           distinctOptionIds = ["1", "2", "3", "4"];
         }
       }
+      alert(distinctOptionIds);
+      alert('midpoint');
       let distinctOptions = distinctOptionIds.map((id) => {
         return {
           id,
