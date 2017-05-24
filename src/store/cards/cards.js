@@ -24,9 +24,10 @@ const cards = (state = [], action) => {
           return c;
         }
 
-        return Object.assign({}, c, {
+        return {
+          ...c,
           selected: !c.selected
-        });
+        };
       });
     case SELECT_CHOICE:
       return state.map((c) => {
@@ -34,9 +35,10 @@ const cards = (state = [], action) => {
           return c;
         }
 
-        return Object.assign({}, c, {
+        return {
+          ...c,
           selectedChoice: action.choiceId
-        });
+        };
       });
     default:
       return state;
