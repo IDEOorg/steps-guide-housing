@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import MediaQuery from 'react-responsive';
 import './index.less';
 import { selectOption, markTried, toggleOption } from '../../store/selectedOptions/selectedOptions';
@@ -9,7 +10,6 @@ import OptionsIntro from '../../components/OptionsIntro';
 import ActionPlan from '../../components/ActionPlan';
 import TriedOptions from '../TriedOptions';
 import optionsData from '../../data/options';
-import { changeNav, MAIN_PAGE } from '../../store/nav/nav';
 
 class OptionsPage extends Component {
   constructor(props){
@@ -59,6 +59,7 @@ class OptionsPage extends Component {
   }
   render() {
     const currentOption = this.props.currentOption;
+    alert(currentOption);
     const filteredOptions = this.props.options.filter((option) => !option.tried);
 
     let optionsWithActions = null;
@@ -176,7 +177,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    goBack: () => dispatch(changeNav(MAIN_PAGE)),
+    goBack: () => dispatch(push('/')),
     onSelect: (id) => dispatch(selectOption(id)),
     markTried: (id) => dispatch(markTried(id)),
     toggleOption: (id) => dispatch(toggleOption(id))
@@ -200,3 +201,5 @@ OptionsPage.propTypes = {
   goBack: PropTypes.func.isRequired,
   markTried: PropTypes.func,
 };
+
+OptionsPage.displayName = 'Options Page';

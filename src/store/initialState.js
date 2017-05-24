@@ -1,4 +1,3 @@
-import { MAIN_PAGE } from './nav/nav';
 import cardsData from '../data/cards';
 
 const initialState = {
@@ -13,8 +12,7 @@ const initialState = {
   selectedOptions: {
     currentOption: null,
     options: []
-  },
-  nav: MAIN_PAGE
+  }
 };
 
 export default initialState;

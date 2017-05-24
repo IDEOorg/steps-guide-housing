@@ -16,7 +16,7 @@
   });
   .desktop({
     width: 44%;
-    margin: 1.5%
+    margin: 1em 1.5%;
   });
 }
 .card {
@@ -28,10 +28,25 @@
   align-items: center;
   text-align: center;
   cursor: pointer;
+  position: relative;
+  .desktop({
+    &:hover {
+      .card_add_icon {
+        opacity: 1;
+      }
+    }
+  });
   h2 {
     font-size: 1.25em;
     line-height: 1.2;
   }
+}
+
+.card_add_icon {
+  position: absolute;
+  top: 1.25em;
+  right: 1.25em;
+  opacity: 0.7;
 }
 
 .card_box.card_unselected {
@@ -47,8 +62,12 @@
   color: fade(@base-blue, 70%);
 }
 .card_box.card_selected {
+  background: rgb(244,247,255);
   box-shadow: 0 0 6px 1px fade(@base-blue, 40%);
   color: @base-blue;
+  .card_add_icon {
+    display: none;
+  }
 }
 
 .card_with_choices {

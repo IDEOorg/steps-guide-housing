@@ -3,14 +3,18 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import initialState from './store/initialState';
 import configureStore from './store/configureStore';
-import App from './containers/App';
+import { hashHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+import Routes from './routes';
 import '../vendors/sanitize.min.css';
 import './index.less';
 
 const store = configureStore(initialState);
+const history = syncHistoryWithStore(hashHistory, store);
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Routes history={history} />
   </Provider>,
   document.getElementById('app')
 );
