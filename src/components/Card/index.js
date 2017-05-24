@@ -5,6 +5,9 @@ import './index.less';
 
 const Card = (props) => {
   let choicesBox = null;
+  alert(Object.keys(props));
+  alert(props.id);
+
   if(props.choices) {
     let choices = Object.keys(props.choices).map((choiceId) => {
       return (
@@ -42,7 +45,11 @@ const Card = (props) => {
     <div className={classNames("card_box", cardBoxClass)}>
       <div className={classNames("card", cardClass)}
         style={{position: 'relative'}}
-        onClick={() => props.onSelect(props.id)}
+        onClick={() => {
+          alert('card clicked');
+          alert(props.id);
+          props.onSelect(props.id);
+        }}
       >
         <img className={"card_add_icon"} src={require('../../assets/card-add-icon.svg')} />
         <h2>{props.text}</h2>
