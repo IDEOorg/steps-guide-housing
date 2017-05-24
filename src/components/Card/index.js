@@ -5,8 +5,6 @@ import './index.less';
 
 const Card = (props) => {
   let choicesBox = null;
-  alert(Object.keys(props));
-  alert(props.id);
 
   if(props.choices) {
     let choices = Object.keys(props.choices).map((choiceId) => {
@@ -46,8 +44,6 @@ const Card = (props) => {
       <div className={classNames("card", cardClass)}
         style={{position: 'relative'}}
         onClick={() => {
-          alert('card clicked');
-          alert(props.id);
           props.onSelect(props.id);
         }}
       >
