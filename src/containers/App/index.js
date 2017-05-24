@@ -1,23 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './index.less';
 import Header from '../../components/Header';
+import MainPage from '../MainPage';
+import OptionsPage from '../OptionsPage';
+import {MAIN_PAGE, OPTIONS_PAGE} from '../../store/nav/nav';
 
-const App = (props) => {
-  return (
-    <div className="app">
-      <Header />
-      <div className="app_content">
-        { props.children }
+class App extends Component {
+  render() {
+    let currentPage;
+    if(this.props.nav === MAIN_PAGE) {
+      currentPage = <MainPage />;
+    }
+    else if(this.props.nav === OPTIONS_PAGE) {
+      currentPage = <OptionsPage />;
+    }
+    return (
+      <div className="app">
+        <Header />
+        <div className="app_content">
+          {currentPage}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    nav: state.nav
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  {}
+)(App);
 
 App.propTypes = {
-  children: PropTypes.string.isRequired
+  nav: PropTypes.string.isRequired
 };
-
-App.displayName = 'App';

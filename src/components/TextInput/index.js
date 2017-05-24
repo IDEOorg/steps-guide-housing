@@ -32,5 +32,3 @@ TextInput.propTypes = {
   className: PropTypes.string,
   placeholder: PropTypes.string
 };
-
-TextInput.displayName = 'TextInput';

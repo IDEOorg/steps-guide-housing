@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
 import TextInput from '../TextInput';
-import UrlImage from '../UrlImage';
 import './index.less';
+const urlImg = require('../../assets/url-icon.svg');
 
 export default class ZipcodeBox extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ export default class ZipcodeBox extends Component {
           }}
           textStyleClass="action_button_text"
           className="action_button">
-          <UrlImage />
+          <img style={{marginBottom: '0.15625em', marginRight: '0.75em'}} src={urlImg} />
           {this.props.buttonText}
         </Button>
       </div>
@@ -38,5 +38,3 @@ ZipcodeBox.propTypes = {
   urlEnd: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
 };
-
-ZipcodeBox.displayName = 'ZipcodeBox';

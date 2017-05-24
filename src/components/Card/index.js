@@ -1,61 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './index.less';
 
-const Card = (props) => {
-  let choicesBox = null;
-
-  if(props.choices) {
-    let choices = Object.keys(props.choices).map((choiceId) => {
-      return (
-        <div key={choiceId}
-          className={
-            classNames({
-              card_choice: true,
-              card_choice_selected: choiceId === props.selectedChoice,
-              card_choice_unselected: choiceId !== props.selectedChoice
-            })}
-          onClick={() => props.onChoiceSelect(props.id, choiceId)}>
-          <h6>{props.choices[choiceId].text}</h6>
+export default class Card extends Component {
+  render() {
+    let choicesBox = null;
+    if(this.props.choices) {
+      let choices = Object.keys(this.props.choices).map((choiceId) => {
+        return (
+          <div key={choiceId}
+            className={classNames("card_choice", choiceId === this.props.selectedChoice ? "card_choice_selected" : "card_choice_unselected")}
+            onClick={() => this.props.onChoiceSelect(this.props.id, choiceId)}>
+            <h6>{this.props.choices[choiceId].text}</h6>
+          </div>
+        );
+      });
+      choicesBox = (
+        <div className="choices_box">
+          {choices}
         </div>
       );
-    });
-    choicesBox = (
-      <div className="choices_box">
-        {choices}
+    }
+    let cardBoxClass = null;
+    let cardClass = null;
+    if(this.props.selected) {
+      cardBoxClass = "card_selected";
+      if(this.props.choices) {
+        cardClass = "card_with_choices";
+      }
+    }
+    else {
+      cardBoxClass = "card_unselected";
+    }
+
+    return (
+      <div className={classNames("card_box", cardBoxClass)}>
+        <div className={classNames("card", cardClass)}
+          onClick={() => this.props.onSelect(this.props.id)}>
+          <h2>{this.props.text}</h2>
+        </div>
+        {choicesBox}
       </div>
     );
   }
-  let cardBoxClass = null;
-  let cardClass = null;
-  if(props.selected) {
-    cardBoxClass = "card_selected";
-    if(props.choices) {
-      cardClass = "card_with_choices";
-    }
-  }
-  else {
-    cardBoxClass = "card_unselected";
-  }
-
-  return (
-    <div className={classNames("card_box", cardBoxClass)}>
-      <div className={classNames("card", cardClass)}
-        style={{position: 'relative'}}
-        onClick={() => {
-          props.onSelect(props.id);
-        }}
-      >
-        <img className={"card_add_icon"} src={require('../../assets/card-add-icon.svg')} />
-        <h2>{props.text}</h2>
-      </div>
-      {choicesBox}
-    </div>
-  );
-};
-
-export default Card;
+}
 
 Card.propTypes = {
   selected: PropTypes.bool.isRequired,
@@ -69,5 +58,3 @@ Card.propTypes = {
     options: PropTypes.arrayOf(PropTypes.string)
   })))
 };
-
-Card.displayName = 'Card';

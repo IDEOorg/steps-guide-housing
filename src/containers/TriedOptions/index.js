@@ -38,12 +38,7 @@ class TriedOptions extends Component {
       triedOptionsEnabled = false;
     }
     return (
-      <div className={
-          classNames({
-            tried_options: true,
-            tried_options_disabled: !triedOptionsEnabled
-          })}
-      >
+      <div className={classNames("tried_options", triedOptionsEnabled ? null : "tried_options_disabled")}>
         <div className="already_tried_toggle_box"
           onClick={() =>{
             this.setState({isExpanded: !this.state.isExpanded});
@@ -78,5 +73,3 @@ TriedOptions.propTypes = {
   triedOptions: PropTypes.object,
   addTriedBack: PropTypes.func.isRequired
 };
-
-TriedOptions.displayName = 'TriedOptions';
