@@ -48,9 +48,7 @@ const CardsSection = (props) => {
   );
 };
 
-function mapStateToProps(state, ownProps) {
-  console.log(state);
-  console.log(ownProps);
+function mapStateToProps(state) {
   return {
     cards: state.cards
   };
@@ -61,7 +59,6 @@ function mapDispatchToProps(dispatch) {
     onSelect: (id) => dispatch(selectCard(id)),
     onChoiceSelect: (cardId, choiceId) => dispatch(selectChoice(cardId, choiceId)),
     onSubmit: (cards) => {
-      console.log('ok');
       dispatch(push('/options'));
       dispatch(generateOptions(cards));
     }
