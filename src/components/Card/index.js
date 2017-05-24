@@ -43,7 +43,7 @@ const Card = (props) => {
     <div className={classNames("card_box", cardBoxClass)}>
       <div className={classNames("card", cardClass)}
         style={{position: 'relative'}}
-        onClick={(e) => {
+        onClick={() => {
           props.onSelect();
         }}
       >
