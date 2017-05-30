@@ -4,11 +4,14 @@ The Steps Housing Guide is an open sourced resource for anyone to use. This reso
 
 ## Getting Started
 
+#### Including the guide into your own website
+
+
 #### Running the code on your own local environment
 1. `git clone https://github.com/IDEOorg/steps-guide-housing`
 2. `cd steps-guide-housing`
 3. `npm install`
-4. Running the code on your server
+4. Running the code on your server:
   * **To run the development build:**
   `npm run start` then go to http://localhost:3000
   * **To run the production build**
