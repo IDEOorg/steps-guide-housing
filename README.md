@@ -7,7 +7,11 @@ Through a quick selection of statement cards, the guide leads people to personal
 ## Getting Started
 
 #### Including the guide into your own website
-
+1. Go to the [/dist](/dist) folder. You should see three files with the extension .html, .js, .css.
+2. If you'd like this housing guide on a separate page by itself, simply copy the three files into the same folder. Then open the index.html page with your favorite browser.
+3. If you'd like this housing guide embedded inside of your own website template, include the following snippet of code into the section of the html file where you wish to display the guide: `<div id="steps-guided-content-tool"></div>`
+4. Then right before the end `</body>` tag (after all other code), insert this `<script type="text/javascript" src="main.c02ab41617811adab211.js"></script>`
+5. Right before the end `</head>` tag (after all other stylesheets), insert this `<link href="main.a9bcb82c74a102506c4c96f8af330c2c.css" rel="stylesheet">`
 
 #### Running the code on your own local environment
 1. `git clone https://github.com/IDEOorg/steps-guide-housing`
@@ -17,7 +21,7 @@ Through a quick selection of statement cards, the guide leads people to personal
   * **To run the development build:**
   `npm run start` then go to http://localhost:3000
   * **To run the production build**
-  `npm run build` then go to http://localhost:4000. The production files will be in the /dist folder.
+  `npm run build` then go to http://localhost:4000. The production files will be in the [/dist](/dist) folder.
 
 ## Contribution and Submitting Bugs
 
