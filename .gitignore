@@ -2,6 +2,9 @@
 logs
 *.log*
 
+# Partner specific styling
+partner
+
 # Runtime data
 pids
 *.pid
