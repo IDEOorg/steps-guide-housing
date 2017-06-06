@@ -31,7 +31,7 @@ Please submit any bug reports via GitHub issues. Click on the Issues tab at the 
 
 ## License
 
-This project is licensed under the MIT license. The license can be read [here](LICENSE)
+This project is licensed under the MIT license. The license can be read [here](LICENSE).
 
 ## Other Open Source Licenses
 
