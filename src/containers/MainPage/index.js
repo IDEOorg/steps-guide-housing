@@ -10,7 +10,7 @@ const MainPage = () => {
         <img className="intro_image" src={introImg}/>
         <div className="intro_main_intro">
           <h1 className="intro_headline">I Can't Pay My Rent</h1>
-          <p className="intro_tagline">There are still options to explore when you can't pay rent. To get started, choose all the statements on the right that apply to you.</p>
+          <p className="intro_tagline">There are still options to explore, and we’re here to help. To get started, choose all the statements that apply to you and we’ll find the best options together.</p>
         </div>
       </div>
       <CardsSection />
